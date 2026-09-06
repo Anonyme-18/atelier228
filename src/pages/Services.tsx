@@ -121,6 +121,39 @@ export default function Services() {
         })}
       </div>
 
+      {/* Bandeau transversal — visite 3D */}
+      <section className="mx-auto max-w-7xl px-5 pb-4 sm:px-8" aria-labelledby="svc-3d">
+        <Reveal>
+          <Link
+            to="/visite-3d"
+            className="group relative flex flex-col items-start justify-between gap-6 overflow-hidden rounded-[4px] bg-pine p-8 text-paper transition-colors duration-300 hover:bg-deep sm:flex-row sm:items-center lg:p-10"
+          >
+            <svg
+              className="absolute -right-6 -top-8 h-48 w-48 opacity-15 transition-all duration-500 group-hover:rotate-3 group-hover:opacity-25"
+              viewBox="0 0 100 100"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path d="M50 8 90 30v40L50 92 10 70V30Z" stroke="#d9bc7f" strokeWidth="1.5" />
+              <path d="M10 30l40 22 40-22M50 52v40" stroke="#d9bc7f" strokeWidth="1.5" />
+            </svg>
+            <div className="relative">
+              <h2 id="svc-3d" className="font-display text-2xl font-medium sm:text-3xl">
+                Avant de choisir, <em className="italic text-brasssoft">entrez dans la pièce.</em>
+              </h2>
+              <p className="mt-2 max-w-xl text-sm leading-relaxed text-paper/65">
+                Notre salon témoin est modélisé en 3D : matériaux, lumière,
+                volumes — explorez-le librement pour juger de notre approche.
+              </p>
+            </div>
+            <span className="relative inline-flex h-12 shrink-0 items-center gap-2.5 rounded-[3px] bg-brass px-7 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-deep transition-colors duration-300 group-hover:bg-brasssoft">
+              Lancer la visite 3D
+              <IconArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </span>
+          </Link>
+        </Reveal>
+      </section>
+
       <CTABand
         source="services_bas"
         title={

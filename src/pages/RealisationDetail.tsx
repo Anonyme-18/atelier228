@@ -134,6 +134,17 @@ export default function RealisationDetail() {
                   </div>
                 </div>
               </Reveal>
+              <Reveal delay={190}>
+                <Link
+                  to="/visite-3d"
+                  className="group flex items-center justify-between gap-3 rounded-[4px] border border-ink/12 bg-sand/70 p-4 transition-colors hover:border-brassdark"
+                >
+                  <span className="text-[12.5px] font-semibold uppercase tracking-[0.12em] text-ink/75">
+                    Voir aussi : la maquette 3D du showroom
+                  </span>
+                  <IconArrowUpRight className="h-4 w-4 shrink-0 text-brassdark transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Link>
+              </Reveal>
               <Reveal delay={220}>
                 <div className="rounded-[4px] bg-deep p-7 text-paper">
                   <p className="font-display text-xl font-medium italic text-brasssoft">

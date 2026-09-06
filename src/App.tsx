@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { HashRouter, Link, Route, Routes } from "react-router-dom";
 import { Layout, ScrollManager } from "./components/chrome";
 import { ButtonLink, Overline, Reveal } from "./components/ui";
@@ -9,6 +10,8 @@ import RealisationDetail from "./pages/RealisationDetail";
 import Realisations from "./pages/Realisations";
 import ServiceDetail from "./pages/ServiceDetail";
 import Services from "./pages/Services";
+
+const Visite3D = lazy(() => import("./pages/Visite3D"));
 
 function NotFound() {
   usePageMeta(
@@ -69,6 +72,14 @@ export default function App() {
           <Route path="/services/:slug" element={<ServiceDetail />} />
           <Route path="/realisations" element={<Realisations />} />
           <Route path="/realisations/:slug" element={<RealisationDetail />} />
+          <Route
+            path="/visite-3d"
+            element={
+              <Suspense fallback={<div className="min-h-[60vh] bg-deep" />}>
+                <Visite3D />
+              </Suspense>
+            }
+          />
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />

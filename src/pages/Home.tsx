@@ -279,6 +279,101 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ═══════════ 02bis — Teaser visite 3D ═══════════ */}
+      <section className="relative overflow-hidden bg-pine text-paper" aria-labelledby="visite3d-titre">
+        {/* grille de fond façon plan d'architecte */}
+        <svg className="absolute inset-0 h-full w-full opacity-[0.06]" aria-hidden="true">
+          <defs>
+            <pattern id="grid3d" width="42" height="42" patternUnits="userSpaceOnUse">
+              <path d="M42 0H0v42" fill="none" stroke="#f2f0e9" strokeWidth="1" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid3d)" />
+        </svg>
+
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:py-24">
+          <div>
+            <Reveal>
+              <Overline tone="light">Nouveau · Visite 3D</Overline>
+            </Reveal>
+            <Reveal delay={80}>
+              <h2 id="visite3d-titre" className="mt-4 font-display text-3xl font-medium leading-[1.08] sm:text-4xl lg:text-[2.75rem]">
+                Entrez dans notre salon témoin,{" "}
+                <em className="italic text-brasssoft">en 3D.</em>
+              </h2>
+            </Reveal>
+            <Reveal delay={150}>
+              <p className="mt-5 max-w-xl leading-relaxed text-paper/70">
+                Tournez autour de la pièce, allumez les lampes, changez de point
+                de vue. La même méthode que sur nos chantiers : on valide
+                l'espace en maquette avant de poser le premier matériau.
+              </p>
+            </Reveal>
+            <Reveal delay={220}>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <ButtonLink to="/visite-3d" trackSource="accueil_visite3d">
+                  Explorer la visite 3D
+                </ButtonLink>
+                <ButtonLink
+                  to="/realisations"
+                  variant="outlineLight"
+                  trackSource="accueil_visite3d_real"
+                >
+                  Voir les chantiers réels
+                </ButtonLink>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Maquette isométrique dessinée */}
+          <Reveal delay={180} className="relative">
+            <svg
+              viewBox="0 0 340 270"
+              className="mx-auto w-full max-w-md"
+              fill="none"
+              role="img"
+              aria-label="Illustration isométrique du salon témoin modélisé en 3D"
+            >
+              {/* sol */}
+              <path d="M170 218 292 157 170 96 48 157Z" fill="#1a332a" stroke="#f2f0e9" strokeOpacity="0.5" />
+              {/* mur gauche */}
+              <path d="M48 157 170 96V30L48 91Z" fill="#152a22" stroke="#f2f0e9" strokeOpacity="0.5" />
+              {/* mur droit */}
+              <path d="M170 96 292 157V91L170 30Z" fill="#12241d" stroke="#f2f0e9" strokeOpacity="0.5" />
+              {/* fenêtre mur gauche */}
+              <path d="M72 128 130 99V64L72 93Z" fill="#ffe6b8" fillOpacity="0.85" stroke="#d9bc7f" />
+              <path d="M101 113.5V81" stroke="#1f3d31" strokeWidth="2" />
+              {/* canapé */}
+              <g className="dim-fade">
+                <path d="M150 196 218 162 196 151 128 185Z" fill="#5f7367" stroke="#f2f0e9" strokeOpacity="0.35" />
+                <path d="M128 185 150 196v-26l-22-11Z" fill="#4d5f55" stroke="#f2f0e9" strokeOpacity="0.35" />
+                <path d="M128 159 196 125v26l-68 34Z" fill="#6d8175" stroke="#f2f0e9" strokeOpacity="0.35" />
+              </g>
+              {/* suspension */}
+              <g>
+                <path d="M228 40v36" stroke="#d9bc7f" strokeWidth="1.5" />
+                <circle cx="228" cy="80" r="6" fill="#ffd9a0" className="pulse-soft" />
+              </g>
+              {/* cotes d'architecte */}
+              <g stroke="#d9bc7f" strokeOpacity="0.75" strokeDasharray="4 4" className="dim-fade">
+                <path d="M170 240 300 175" />
+                <path d="M166 238l8 4M296 173l8 4" strokeDasharray="none" />
+              </g>
+              <text x="216" y="224" fill="#d9bc7f" fontSize="11" fontFamily="Archivo, sans-serif" letterSpacing="2">
+                5,20 m
+              </text>
+              {/* points sommets */}
+              <circle cx="170" cy="30" r="3" fill="#d9bc7f" />
+              <circle cx="48" cy="91" r="3" fill="#d9bc7f" />
+              <circle cx="292" cy="91" r="3" fill="#d9bc7f" />
+            </svg>
+            <span className="absolute -top-2 right-0 rounded-[3px] bg-brass px-3 py-1.5 text-[10.5px] font-bold uppercase tracking-[0.16em] text-deep sm:right-6">
+              Interactive
+            </span>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ═══════════ 03 — Pourquoi nous (colonne sticky) ═══════════ */}
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="pourquoi-titre">
         <div className="grid gap-12 lg:grid-cols-12">

@@ -147,7 +147,8 @@ export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
 
   const inputCls = (key: keyof Values) =>
     cx(
-      "w-full rounded-[3px] border bg-bone px-4 py-3 text-[15px] text-ink placeholder:text-ink/35 transition-colors focus:outline-none",
+      /* text-base (16px) évite le zoom auto d'iOS au focus */
+      "w-full rounded-[3px] border bg-bone px-4 py-3 text-base text-ink placeholder:text-ink/35 transition-colors focus:outline-none",
       errors[key]
         ? "border-err focus:border-err"
         : "border-line focus:border-brassdark"

@@ -12,8 +12,10 @@ import {
 import {
   serviceBySlug,
   PROJECTS,
+  AVANT_APRES,
   type ProjectCategory,
 } from "../data/content";
+import { AvantApres } from "../components/AvantApres";
 import { usePageMeta } from "../lib/usePageMeta";
 
 const SLUG_TO_CATEGORY: Record<string, ProjectCategory> = {
@@ -162,6 +164,52 @@ export default function ServiceDetail() {
           </div>
         </div>
       </section>
+
+      {/* ——— Avant / Après (preuve de transformation) ——— */}
+      {AVANT_APRES.length > 0 && (
+        <section className="border-b border-ink/10 bg-night py-16 text-paper lg:py-24" aria-labelledby="avap-svc">
+          <div className="mx-auto max-w-7xl px-5 sm:px-8">
+            <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+              <div className="lg:col-span-5">
+                <Reveal>
+                  <Overline tone="light">Avant / Après</Overline>
+                  <h2 id="avap-svc" className="mt-4 font-display text-3xl font-medium leading-tight sm:text-4xl">
+                    On ne promet pas,{" "}
+                    <em className="italic text-brasssoft">on transforme.</em>
+                  </h2>
+                </Reveal>
+                <Reveal delay={120}>
+                  <p className="mt-5 leading-relaxed text-paper/70">
+                    Faites glisser le curseur sur la photo : à gauche l'état
+                    d'origine, à droite le chantier livré. C'est notre façon la
+                    plus honnête de montrer ce que nous savons faire.
+                  </p>
+                </Reveal>
+                <Reveal delay={200}>
+                  <ul className="mt-7 space-y-3.5">
+                    {AVANT_APRES.map((p) => (
+                      <li key={p.id} className="flex items-start gap-3">
+                        <span className="mt-1.5 h-2 w-2 shrink-0 rotate-45 bg-brasssoft" />
+                        <span className="text-sm text-paper/75">
+                          <strong className="font-semibold text-brasssoft">{p.title}</strong>
+                          {" — "}{p.note}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </Reveal>
+              </div>
+              <div className="lg:col-span-7">
+                <Reveal delay={140}>
+                  {AVANT_APRES.map((p) => (
+                    <AvantApres key={p.id} before={p.before} after={p.after} alt={p.title} />
+                  ))}
+                </Reveal>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ——— Exemples de réalisations (ou état éditorial propre) ——— */}
       <section className="border-y border-ink/10 bg-sand/60 py-16 lg:py-24" aria-labelledby="ex-svc">

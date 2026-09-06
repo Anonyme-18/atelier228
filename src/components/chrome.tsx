@@ -278,7 +278,7 @@ export function Header() {
 export function MobileCtaBar() {
   const { pathname } = useLocation();
   const visible =
-    pathname.startsWith("/services/") || pathname.startsWith("/realisations/");
+    pathname.startsWith("/services") || pathname.startsWith("/realisations");
   if (!visible) return null;
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-paper/10 bg-deep/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md lg:hidden">
@@ -439,7 +439,7 @@ export function Footer() {
 export function Layout() {
   const { pathname } = useLocation();
   const withCtaBar =
-    pathname.startsWith("/services/") || pathname.startsWith("/realisations/");
+    pathname.startsWith("/services") || pathname.startsWith("/realisations");
   return (
     <div className="grain flex min-h-screen flex-col">
       <Header />

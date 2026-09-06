@@ -169,48 +169,54 @@ export default function Visite3D() {
         <div className="absolute inset-x-0 bottom-0 z-10">
           <div className="mx-auto max-w-7xl px-5 pb-5 sm:px-8">
             <Reveal delay={260}>
-              <div className="flex flex-wrap items-center gap-2.5">
-                <span className="mr-1 hidden items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-paper/50 sm:inline-flex">
-                  <IconEye className="h-4 w-4 text-brasssoft" />
-                  Points de vue
-                </span>
-                {VIEWS.map((v) => (
-                  <button
-                    key={v.id}
-                    type="button"
-                    onClick={() => goView(v)}
-                    aria-pressed={viewId === v.id}
-                    className={cx(
-                      "cursor-pointer rounded-[3px] px-4 py-2.5 text-[12px] font-semibold uppercase tracking-[0.12em] transition-all duration-300",
-                      viewId === v.id
-                        ? "bg-brass text-deep"
-                        : "border border-paper/25 text-paper/75 hover:border-paper/60 hover:text-paper"
-                    )}
-                  >
-                    {v.label}
-                  </button>
-                ))}
-                <span className="mx-1 hidden h-6 w-px bg-paper/20 sm:block" />
-                <Toggle
-                  on={lampsOn}
-                  onClick={() => {
-                    setLampsOn(!lampsOn);
-                    trackCta("visite3d_lumieres");
-                  }}
-                  label={lampsOn ? "Lumières allumées" : "Lumières éteintes"}
-                  icon={<IconSparkle className="h-4 w-4" />}
-                />
-                <Toggle
-                  on={autoRotate}
-                  onClick={() => setAutoRotate(!autoRotate)}
-                  label="Rotation auto"
-                  icon={
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="h-4 w-4" aria-hidden="true">
-                      <path d="M20 12a8 8 0 1 1-2.3-5.6" />
-                      <path d="M20 3v4h-4" />
-                    </svg>
-                  }
-                />
+              <div className="flex flex-col gap-2.5 lg:flex-row lg:items-center">
+                {/* Points de vue : une rangée défilable sur mobile */}
+                <div className="-mx-1 flex items-center gap-2 overflow-x-auto px-1 scrollbar-none lg:overflow-visible">
+                  <span className="hidden shrink-0 items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-paper/50 sm:inline-flex">
+                    <IconEye className="h-4 w-4 text-brasssoft" />
+                    Points de vue
+                  </span>
+                  {VIEWS.map((v) => (
+                    <button
+                      key={v.id}
+                      type="button"
+                      onClick={() => goView(v)}
+                      aria-pressed={viewId === v.id}
+                      className={cx(
+                        "shrink-0 cursor-pointer rounded-[3px] px-4 py-2.5 text-[12px] font-semibold uppercase tracking-[0.12em] transition-all duration-300",
+                        viewId === v.id
+                          ? "bg-brass text-deep"
+                          : "border border-paper/25 text-paper/75 hover:border-paper/60 hover:text-paper"
+                      )}
+                    >
+                      {v.label}
+                    </button>
+                  ))}
+                </div>
+                <span className="hidden h-6 w-px shrink-0 bg-paper/20 lg:block" />
+                {/* Interrupteurs */}
+                <div className="flex flex-wrap items-center gap-2">
+                  <Toggle
+                    on={lampsOn}
+                    onClick={() => {
+                      setLampsOn(!lampsOn);
+                      trackCta("visite3d_lumieres");
+                    }}
+                    label={lampsOn ? "Lumières allumées" : "Lumières éteintes"}
+                    icon={<IconSparkle className="h-4 w-4" />}
+                  />
+                  <Toggle
+                    on={autoRotate}
+                    onClick={() => setAutoRotate(!autoRotate)}
+                    label="Rotation auto"
+                    icon={
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="h-4 w-4" aria-hidden="true">
+                        <path d="M20 12a8 8 0 1 1-2.3-5.6" />
+                        <path d="M20 3v4h-4" />
+                      </svg>
+                    }
+                  />
+                </div>
               </div>
             </Reveal>
           </div>

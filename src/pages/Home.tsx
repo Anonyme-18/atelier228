@@ -21,8 +21,10 @@ import {
   ProjectCard,
   ServiceLine,
 } from "../components/cards";
+import { AvantApres } from "../components/AvantApres";
 import { consumeAnchor } from "../components/chrome";
 import {
+  AVANT_APRES,
   CONTACT,
   IMAGES,
   PROJECTS,
@@ -276,6 +278,72 @@ export default function Home() {
               <ProjectCard project={others[2]} aspect="aspect-[21/9]" delay={140} />
             </div>
           )}
+        </div>
+      </section>
+
+      {/* ═══════════ 02b — Avant / Après (la preuve par la transformation) ═══════════ */}
+      <section className="bg-night py-20 text-paper lg:py-28" aria-labelledby="avap-titre">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <SectionHead
+                overline="02b · Avant / Après"
+                tone="light"
+                title={
+                  <span id="avap-titre">
+                    La rénovation se juge{" "}
+                    <em className="italic text-brasssoft">au résultat.</em>
+                  </span>
+                }
+                intro="Pas de discours : faites glisser le curseur et comparez vous-même l'état d'origine et le chantier livré. C'est exactement ce que nous ferons chez vous."
+              />
+              <Reveal delay={220}>
+                <div className="mt-8 space-y-5">
+                  {AVANT_APRES.map((pair) => (
+                    <div key={pair.id} className="border-l-2 border-brassdark/60 pl-5">
+                      <p className="font-display text-xl font-medium text-brasssoft">
+                        {pair.title}
+                      </p>
+                      <p className="mt-1 text-[13px] uppercase tracking-[0.12em] text-paper/45">
+                        {pair.place}
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-paper/70">{pair.note}</p>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+              <Reveal delay={300}>
+                <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                  <ButtonLink to="/contact?type=Rénovation complète" trackSource="accueil_avantapres">
+                    Demander un devis
+                  </ButtonLink>
+                  <ButtonLink to="/realisations" variant="outlineLight" trackSource="accueil_avantapres_real">
+                    Voir les réalisations
+                  </ButtonLink>
+                </div>
+              </Reveal>
+            </div>
+
+            <div className="lg:col-span-7">
+              <Reveal delay={150}>
+                {AVANT_APRES.map((pair) => (
+                  <AvantApres
+                    key={pair.id}
+                    before={pair.before}
+                    after={pair.after}
+                    alt={pair.title}
+                    className="shadow-[0_30px_70px_-25px_rgba(0,0,0,0.6)]"
+                  />
+                ))}
+              </Reveal>
+              <Reveal delay={260}>
+                <p className="mt-4 flex items-center gap-2.5 text-[12px] uppercase tracking-[0.14em] text-paper/40">
+                  <IconArrowRight className="h-4 w-4 text-brasssoft" />
+                  Glissez la poignée pour révéler l'après
+                </p>
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 

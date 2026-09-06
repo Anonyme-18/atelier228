@@ -38,9 +38,33 @@ const IMG = {
   sdbCacaveli: "https://image.qwenlm.ai/generated-images/7890f02d-df12-4f69-ad06-b2fd835d1b24/_result.png",
   appartementBd30: "https://image.qwenlm.ai/generated-images/f3773e70-8759-40d4-b6b5-01b52c4f0b38/_result.png",
   craft: "https://image.qwenlm.ai/generated-images/0cdbddb3-6493-4b7b-84bd-16fdd0a3d91d/_result.png",
+  avantSejour: "https://image.qwenlm.ai/generated-images/e4fdfdb6-c429-46fd-a374-42d188a37e6f/_result.png",
 };
 
 export const IMAGES = IMG;
+
+/* ————— Paires avant / après (preuve de transformation).
+   Ajoutez ici autant de paires que de chantiers photographiés
+   avant et après intervention. ————— */
+export interface AvantApresPair {
+  id: string;
+  title: string;
+  place: string;
+  before: string;
+  after: string;
+  note: string;
+}
+
+export const AVANT_APRES: AvantApresPair[] = [
+  {
+    id: "sejour-baguida",
+    title: "Séjour — villa de Baguida",
+    place: "Baguida, Lomé",
+    before: IMG.avantSejour,
+    after: IMG.hero,
+    note: "Enduits repris, sol remplacé, ouvertures agrandies, menuiseries sur mesure.",
+  },
+];
 
 export type ServiceSlug =
   | "renovation-complete"

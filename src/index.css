@@ -1,1 +1,182 @@
 @import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+
+  /* Atelier 228 — palette : encre verte, os, pin, laiton */
+  --color-paper: #f2f0e9;
+  --color-sand: #e9e5d9;
+  --color-line: #d9d4c5;
+  --color-ink: #1a231e;
+  --color-pine: #1f3d31;
+  --color-deep: #142821;
+  --color-night: #0e1c17;
+  --color-moss: #5f7367;
+  --color-brass: #b0812f;
+  --color-brassdark: #7c5a1e;
+  --color-brasssoft: #d9bc7f;
+  --color-bone: #fbfaf5;
+  --color-ok: #2e6b4f;
+  --color-okbg: #e2ece4;
+  --color-err: #a8402a;
+  --color-errbg: #f3e3dd;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-brasssoft);
+  color: var(--color-deep);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 3px;
+}
+
+/* ————— Signature : grain matière ————— */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 80;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ————— Animations signature ————— */
+@keyframes kenburns {
+  from {
+    transform: scale(1) translateY(0);
+  }
+  to {
+    transform: scale(1.08) translateY(-1.5%);
+  }
+}
+.kenburns {
+  animation: kenburns 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 36s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise-in {
+  animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes draw-check {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.draw-check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: draw-check 0.6s 0.15s ease-out forwards;
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.pulse-soft {
+  animation: pulse-soft 1.6s ease-in-out infinite;
+}
+
+/* Soulignement qui glisse sur les liens */
+.link-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s ease;
+}
+.link-line:hover,
+a:hover > .link-line {
+  background-size: 100% 1px;
+}
+
+/* Flotte les lignes de cote (dessin d'architecte) */
+@keyframes dim-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.dim-fade {
+  animation: dim-fade 1.2s 0.9s ease-out both;
+}
+
+/* Barre de progression du scroll */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* ————— Accessibilité : mouvement réduit ————— */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .kenburns,
+  .marquee-track,
+  .rise-in,
+  .pulse-soft,
+  .dim-fade {
+    animation: none !important;
+  }
+  .draw-check {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

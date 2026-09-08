@@ -1,9 +1,11 @@
 import { useMemo, useState } from "react";
 import { CTABand, ProjectCard } from "../components/cards";
 import { PageHead } from "../components/cards";
-import { cx, Reveal } from "../components/ui";
+import { GalerieAvantApres } from "../components/GalerieAvantApres";
+import { cx, Reveal, SectionHead } from "../components/ui";
 import {
   CATEGORY_LABELS,
+  PROJETS_RENOVATION,
   PROJECTS,
   type ProjectCategory,
 } from "../data/content";
@@ -128,6 +130,34 @@ export default function Realisations() {
           </p>
         </Reveal>
       </section>
+
+      {/* ——— Galeries avant/après par projet de rénovation complète ——— */}
+      {PROJETS_RENOVATION.length > 0 && (
+        <section className="border-t border-ink/10 bg-paper py-16 lg:py-24">
+          <div className="mx-auto max-w-7xl px-5 sm:px-8">
+            <Reveal>
+              <SectionHead
+                overline="Rénovations complètes"
+                title={
+                  <>
+                    Pièce par pièce,{" "}
+                    <em className="italic text-brassdark">la transformation.</em>
+                  </>
+                }
+                intro="Une rénovation complète, c'est transformer chaque espace de vie. Explorez nos projets pièce par pièce : glissez le curseur pour révéler l'avant/après de chaque pièce."
+              />
+            </Reveal>
+
+            <div className="mt-12 space-y-20">
+              {PROJETS_RENOVATION.map((projet, i) => (
+                <Reveal key={projet.id} delay={i * 100}>
+                  <GalerieAvantApres projet={projet} />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <CTABand
         source="realisations_bas"

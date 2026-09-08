@@ -22,11 +22,13 @@ import {
   ServiceLine,
 } from "../components/cards";
 import { AvantApres } from "../components/AvantApres";
+import { GalerieAvantApres } from "../components/GalerieAvantApres";
 import { consumeAnchor } from "../components/chrome";
 import {
   AVANT_APRES,
   CONTACT,
   IMAGES,
+  PROJETS_RENOVATION,
   PROJECTS,
   REASONS,
   SERVICES,
@@ -346,6 +348,42 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ═══════════ 02c — Galeries avant/après par pièce ═══════════ */}
+      {PROJETS_RENOVATION.length > 0 && (
+        <section className="border-b border-ink/10 bg-paper py-16 lg:py-24">
+          <div className="mx-auto max-w-7xl px-5 sm:px-8">
+            <Reveal>
+              <SectionHead
+                overline="Rénovation complète — pièce par pièce"
+                title={
+                  <>
+                    Une villa transformée,{" "}
+                    <em className="italic text-brassdark">5 pièces rénovées.</em>
+                  </>
+                }
+                intro="Découvrez comment nous avons rénové intégralement cette villa de Baguida : du salon à la salle de bain, en passant par la cuisine, la chambre et l'entrée. Glissez le curseur sur chaque pièce pour voir la transformation."
+              />
+            </Reveal>
+
+            <div className="mt-12">
+              {PROJETS_RENOVATION.map((projet, i) => (
+                <Reveal key={projet.id} delay={i * 100}>
+                  <GalerieAvantApres projet={projet} />
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal delay={300}>
+              <div className="mt-12 text-center">
+                <ButtonLink to="/realisations" trackSource="accueil_galerie_complete">
+                  Voir toutes nos réalisations
+                </ButtonLink>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* ═══════════ 02bis — Teaser visite 3D ═══════════ */}
       <section className="relative overflow-hidden bg-pine text-paper" aria-labelledby="visite3d-titre">

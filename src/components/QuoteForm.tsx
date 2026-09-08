@@ -191,7 +191,9 @@ export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
       } catch {
         /* ignore */
       }
-      track("form_submit_success", { ref: result.ref });
+      // Récupère la page d'origine (HashRouter)
+      const sourcePage = window.location.hash.replace("#", "") || "/";
+      track("form_submit_success", { ref: result.ref, sourcePage });
       return;
     }
 

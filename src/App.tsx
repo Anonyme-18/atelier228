@@ -10,6 +10,7 @@ import RealisationDetail from "./pages/RealisationDetail";
 import Realisations from "./pages/Realisations";
 import ServiceDetail from "./pages/ServiceDetail";
 import Services from "./pages/Services";
+import APropos from "./pages/APropos";
 
 const Visite3D = lazy(() => import("./pages/Visite3D"));
 
@@ -80,6 +81,7 @@ export default function App() {
               </Suspense>
             }
           />
+          <Route path="/a-propos" element={<APropos />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />

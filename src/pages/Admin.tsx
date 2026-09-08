@@ -238,7 +238,7 @@ function QuoteRow({
 /* ————— Tableau de bord ————— */
 function Dashboard() {
   const [tick, setTick] = useState(0);
-  const [tab, setTab] = useState<"demandes" | "analytics">("demandes");
+  const [tab, setTab] = useState<"demandes" | "analytics" | "conversion">("demandes");
   const [filter, setFilter] = useState<QuoteStatus | "ALL">("ALL");
   const refresh = () => setTick((t) => t + 1);
 
@@ -263,6 +263,40 @@ function Dashboard() {
     for (const e of events) c[e.name] = (c[e.name] ?? 0) + 1;
     return Object.entries(c).sort((a, b) => b[1] - a[1]);
   }, [events]);
+
+  // Données de conversion par page
+  const conversionData = useMemo(() => {
+    const pageViews: Record<string, number> = {};
+    const formSubmissions: Record<string, number> = {};
+
+    for (const e of events) {
+      if (e.name === "page_view" && e.data?.pathname) {
+        const path = e.data.pathname;
+        pageViews[path] = (pageViews[path] ?? 0) + 1;
+      }
+      if (e.name === "form_submit_success" && e.data?.sourcePage) {
+        const path = e.data.sourcePage;
+        formSubmissions[path] = (formSubmissions[path] ?? 0) + 1;
+      }
+    }
+
+    // Combiner les données
+    const allPages = new Set([...Object.keys(pageViews), ...Object.keys(formSubmissions)]);
+    const data = Array.from(allPages).map((page) => {
+      const views = pageViews[page] ?? 0;
+      const submissions = formSubmissions[page] ?? 0;
+      const rate = views > 0 ? (submissions / views) * 100 : 0;
+      return { page, views, submissions, rate };
+    });
+
+    // Trier par nombre de soumissions (desc)
+    data.sort((a, b) => b.submissions - a.submissions);
+    return data;
+  }, [events]);
+
+  const totalViews = conversionData.reduce((sum, d) => sum + d.views, 0);
+  const totalSubmissions = conversionData.reduce((sum, d) => sum + d.submissions, 0);
+  const globalRate = totalViews > 0 ? (totalSubmissions / totalViews) * 100 : 0;
 
   const exportJson = () => {
     const blob = new Blob([JSON.stringify(quotes, null, 2)], {
@@ -338,10 +372,11 @@ function Dashboard() {
       </div>
 
       {/* Onglets */}
-      <div className="mt-8 flex gap-2" role="tablist" aria-label="Sections du tableau de bord">
+      <div className="mt-8 flex flex-wrap gap-2" role="tablist" aria-label="Sections du tableau de bord">
         {(
           [
             ["demandes", "Demandes"],
+            ["conversion", "Conversion"],
             ["analytics", "Parcours visiteurs"],
           ] as const
         ).map(([key, label]) => (
@@ -391,6 +426,119 @@ function Dashboard() {
             )}
           </div>
         )
+      ) : tab === "conversion" ? (
+        /* ——— Onglet Conversion ——— */
+        <div className="mt-6 space-y-6">
+          {/* Résumé global */}
+          <div className="grid gap-px overflow-hidden rounded-[4px] border border-ink/10 bg-ink/10 sm:grid-cols-3">
+            <div className="bg-paper p-6">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/55">
+                Visites totales
+              </p>
+              <p className="mt-2 font-display text-4xl font-medium text-ink">
+                {totalViews}
+              </p>
+              <p className="mt-1 text-xs text-ink/45">Pages visitées</p>
+            </div>
+            <div className="bg-paper p-6">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/55">
+                Demandes reçues
+              </p>
+              <p className="mt-2 font-display text-4xl font-medium text-ink">
+                {totalSubmissions}
+              </p>
+              <p className="mt-1 text-xs text-ink/45">Formulaires soumis</p>
+            </div>
+            <div className="bg-paper p-6">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/55">
+                Taux de conversion
+              </p>
+              <p className="mt-2 font-display text-4xl font-medium text-brassdark">
+                {globalRate.toFixed(1)}%
+              </p>
+              <p className="mt-1 text-xs text-ink/45">Global</p>
+            </div>
+          </div>
+
+          {/* Tableau par page */}
+          <div className="rounded-[4px] border border-ink/10 bg-bone">
+            <div className="border-b border-ink/10 p-5">
+              <h2 className="font-display text-xl font-medium text-ink">
+                Taux de conversion par page
+              </h2>
+              <p className="mt-1 text-sm text-ink/60">
+                Quelle page génère le plus de demandes de devis ?
+              </p>
+            </div>
+            {conversionData.length > 0 ? (
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm">
+                  <thead className="border-b border-ink/10 bg-sand/50">
+                    <tr>
+                      <th className="px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/55">
+                        Page
+                      </th>
+                      <th className="px-5 py-3 text-right text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/55">
+                        Visites
+                      </th>
+                      <th className="px-5 py-3 text-right text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/55">
+                        Demandes
+                      </th>
+                      <th className="px-5 py-3 text-right text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/55">
+                        Taux
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {conversionData.map((row) => (
+                      <tr key={row.page} className="border-b border-ink/8 last:border-b-0">
+                        <td className="px-5 py-4 font-mono text-[13px] text-ink/80">
+                          {row.page}
+                        </td>
+                        <td className="px-5 py-4 text-right text-ink/70">
+                          {row.views}
+                        </td>
+                        <td className="px-5 py-4 text-right font-semibold text-ink">
+                          {row.submissions}
+                        </td>
+                        <td className="px-5 py-4 text-right">
+                          <span
+                            className={cx(
+                              "inline-block rounded-[3px] px-2.5 py-1 font-mono text-[13px] font-semibold",
+                              row.rate > 5
+                                ? "bg-ok/15 text-ok"
+                                : row.rate > 0
+                                ? "bg-brass/15 text-brassdark"
+                                : "bg-ink/8 text-ink/45"
+                            )}
+                          >
+                            {row.rate.toFixed(1)}%
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div className="p-10 text-center">
+                <p className="font-display text-xl font-medium italic text-ink/60">
+                  Aucune donnée de conversion pour le moment.
+                </p>
+                <p className="mt-2 text-sm text-ink/50">
+                  Les visites de pages et les soumissions de formulaire seront
+                  trackées automatiquement.
+                </p>
+              </div>
+            )}
+          </div>
+
+          <p className="rounded-[4px] border border-brassdark/25 bg-sand/70 p-4 text-xs leading-relaxed text-ink/60">
+            <strong className="text-brassdark">Données réelles :</strong> ces
+            chiffres sont basés sur les visites de pages et les soumissions
+            effectives de formulaire. Aucune estimation, aucun chiffre inventé.
+          </p>
+        </div>
       ) : (
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
           <div className="rounded-[4px] border border-ink/10 bg-bone p-6">

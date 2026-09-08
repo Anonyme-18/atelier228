@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { BRAND, CONTACT, SERVICES } from "../data/content";
-import { trackCta, trackPhone, trackWhatsApp } from "../lib/analytics";
+import { trackCta, trackPageView, trackPhone, trackWhatsApp } from "../lib/analytics";
 import {
   ButtonAnchor,
   ButtonLink,
@@ -144,16 +144,9 @@ export function Header() {
             <NavLink to="/visite-3d" className={navLink}>
               Visite 3D
             </NavLink>
-            <button
-              type="button"
-              onClick={goEntreprise}
-              className={cx(
-                "link-line cursor-pointer text-[13px] font-semibold uppercase tracking-[0.14em]",
-                light ? "text-paper/85 hover:text-paper" : "text-ink/75 hover:text-ink"
-              )}
-            >
-              L'entreprise
-            </button>
+            <NavLink to="/a-propos" className={navLink}>
+              À propos
+            </NavLink>
             <NavLink to="/contact" className={navLink}>
               Contact
             </NavLink>
@@ -209,6 +202,7 @@ export function Header() {
             { label: "Services", to: "/services" },
             { label: "Réalisations", to: "/realisations" },
             { label: "Visite 3D", to: "/visite-3d" },
+            { label: "À propos", to: "/a-propos" },
             { label: "Contact", to: "/contact" },
           ].map((item, i) => (
             <Link
@@ -289,11 +283,13 @@ export function MobileCtaBar() {
   );
 }
 
-/* ————— Scroll management ————— */
+/* ————— Scroll management + tracking de page view ————— */
 export function ScrollManager() {
   const location = useLocation();
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+    // Enregistre la visite de page pour le suivi de conversion
+    trackPageView(location.pathname);
   }, [location.pathname]);
   return null;
 }
@@ -363,6 +359,7 @@ export function Footer() {
               { label: "Services", to: "/services" },
               { label: "Réalisations", to: "/realisations" },
               { label: "Visite 3D", to: "/visite-3d" },
+              { label: "À propos", to: "/a-propos" },
               { label: "Contact & devis", to: "/contact" },
             ].map((l) => (
               <li key={l.to}>

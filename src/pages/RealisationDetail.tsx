@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import { CTABand, ProjectCard } from "../components/cards";
+import { AvantApres } from "../components/AvantApres";
 import {
   IconArrowUpRight,
   IconPin,
@@ -87,6 +88,39 @@ export default function RealisationDetail() {
           </div>
         </Reveal>
       </section>
+
+      {/* ——— Avant / Après ——— */}
+      {project.before && project.after && (
+        <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:py-16">
+          <Reveal>
+            <div className="mb-8">
+              <Overline>Avant / Après</Overline>
+              <h2 className="mt-3 font-display text-2xl font-medium text-ink sm:text-3xl">
+                La transformation en un coup d'œil
+              </h2>
+              {project.beforeAfterNote && (
+                <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink/70">
+                  {project.beforeAfterNote}
+                </p>
+              )}
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <AvantApres
+              before={project.before}
+              after={project.after}
+              alt={`${project.title} — Avant/Après`}
+              className="shadow-[0_24px_60px_-20px_rgba(14,28,23,0.35)]"
+            />
+          </Reveal>
+          <Reveal delay={200}>
+            <p className="mt-4 flex items-center gap-2.5 text-[12px] uppercase tracking-[0.14em] text-ink/50">
+              <IconArrowUpRight className="h-4 w-4 text-brassdark" />
+              Glissez le curseur pour révéler l'après
+            </p>
+          </Reveal>
+        </section>
+      )}
 
       {/* ——— Contenu ——— */}
       <section className="mx-auto max-w-7xl px-5 pb-20 pt-12 sm:px-8 lg:pb-28">

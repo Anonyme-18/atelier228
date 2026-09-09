@@ -44,6 +44,15 @@ export function ProjectCard({
           <span className="absolute left-4 top-4 rounded-[3px] bg-deep/85 px-3 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-paper backdrop-blur-sm">
             {CATEGORY_LABELS[project.category]}
           </span>
+          {project.before && project.after && (
+            <span className="absolute right-4 top-4 flex items-center gap-1.5 rounded-[3px] bg-brass px-3 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-deep backdrop-blur-sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3 w-3" aria-hidden="true">
+                <path d="m9 6-4 6 4 6" />
+                <path d="m15 6 4 6-4 6" />
+              </svg>
+              Avant/Après
+            </span>
+          )}
         </div>
         <div className="flex items-start justify-between gap-4 pt-4">
           <div>

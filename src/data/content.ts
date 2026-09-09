@@ -351,6 +351,9 @@ export interface Project {
   scope: string[];
   materials: string[];
   gallery: GalleryItem[];
+  before?: string; // Image avant rénovation
+  after?: string; // Image après rénovation
+  beforeAfterNote?: string; // Description de la transformation
 }
 
 /* Galerie de démonstration — à remplacer par les photos réelles
@@ -398,6 +401,9 @@ export const PROJECTS: Project[] = [
         position: "object-[50%_40%]",
       },
     ],
+    before: IMG.avantSejour,
+    after: IMG.hero,
+    beforeAfterNote: "Rénovation complète du salon : enduits repris, parquet en chêne massif, menuiseries sur mesure et éclairage intégré.",
   },
   {
     slug: "cuisine-agoe",
@@ -440,6 +446,9 @@ export const PROJECTS: Project[] = [
         position: "object-[50%_45%]",
       },
     ],
+    before: IMG.avantCuisine,
+    after: IMG.apresCuisine,
+    beforeAfterNote: "Cuisine entièrement repensée : îlot central en chêne, plan de travail en granit, électroménager intégré et éclairage LED sous les meubles hauts.",
   },
   {
     slug: "sdb-cacaveli",
@@ -482,6 +491,9 @@ export const PROJECTS: Project[] = [
         position: "object-[50%_50%]",
       },
     ],
+    before: IMG.avantSdb,
+    after: IMG.apresSdb,
+    beforeAfterNote: "Salle de bain transformée : douche à l'italienne avec paroi en verre, double vasque en pierre naturelle, robinetterie laiton brossé et miroir LED antibuée.",
   },
   {
     slug: "appartement-bd30",
@@ -524,6 +536,9 @@ export const PROJECTS: Project[] = [
         position: "object-[50%_50%]",
       },
     ],
+    before: IMG.avantChambre,
+    after: IMG.apresChambre,
+    beforeAfterNote: "Chambre optimisée : tête de lit sur mesure en chêne avec éclairage intégré, dressing aménagé, parquet massif et rideaux occultants motorisés.",
   },
 ];
 

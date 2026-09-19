@@ -307,7 +307,7 @@ export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
             autoComplete="tel"
             value={values.phone}
             onChange={(e) => set("phone")(e.target.value)}
-            placeholder="+228 90 00 00 00"
+            placeholder="+228 XX XX XX XX"
             className={inputCls("phone")}
             {...aria("phone")}
           />

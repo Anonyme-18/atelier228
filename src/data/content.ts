@@ -16,9 +16,9 @@ export const BRAND = {
 
 /* ————— Coordonnées (placeholder : à remplacer) ————— */
 export const CONTACT = {
-  phoneDisplay: "+228 90 12 34 56",
-  phoneHref: "tel:+22890123456",
-  whatsappUrl: "https://wa.me/22890123456",
+  phoneDisplay: "+228 XX XX XX XX",
+  phoneHref: "#contact",
+  whatsappUrl: "#contact",
   email: "contact@atelier228.tg",
   address: "Agoè Assiyéyé, Lomé — Togo",
   hours: "Lun – Sam · 8h à 18h",

@@ -1,8 +1,6 @@
-import { Link } from "react-router-dom";
 import { CTABand } from "../components/cards";
 import {
   ButtonLink,
-  IconArrowUpRight,
   IconCheck,
   Img,
   Overline,

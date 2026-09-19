@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { BRAND, CONTACT, SERVICES } from "../data/content";
-import { trackCta, trackPageView, trackPhone, trackWhatsApp } from "../lib/analytics";
+import { trackPageView, trackPhone, trackWhatsApp } from "../lib/analytics";
 import {
   ButtonAnchor,
   ButtonLink,

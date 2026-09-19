@@ -71,9 +71,11 @@ export function updateQuoteStatus(
   const rows = listQuotes();
   const idx = rows.findIndex((r) => r.id === id);
   if (idx === -1) return null;
-  rows[idx] = { ...rows[idx], status, updatedAt: new Date().toISOString() };
+  const existing = rows[idx];
+  if (!existing) return null;
+  rows[idx] = { ...existing, status, updatedAt: new Date().toISOString() };
   writeJson(QUOTES_KEY, rows);
-  return rows[idx];
+  return rows[idx] ?? null;
 }
 
 /* ————— Journal d'événements (analytics) ————— */

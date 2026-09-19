@@ -175,7 +175,6 @@ export function ServiceLine({
   image,
   imageAlt,
   slug,
-  quoteType,
   delay = 0,
 }: {
   index: string;

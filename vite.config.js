@@ -12,4 +12,21 @@ export default defineConfig({
       port: 3000,
     },
   },
+  build: {
+    // Optimize bundle size
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Separate Three.js into its own chunk
+          three: ["three"],
+          // Separate React into its own chunk
+          vendor: ["react", "react-dom", "react-router-dom"],
+        },
+      },
+    },
+    // Generate sourcemaps for production
+    sourcemap: false,
+    // Minify output (esbuild is default in Vite)
+    minify: "esbuild",
+  },
 });

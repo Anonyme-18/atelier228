@@ -46,19 +46,23 @@ export function GalerieAvantApres({ projet }: { projet: ProjetRenovation }) {
       {/* Comparateur avant/après */}
       <Reveal delay={200}>
         <div className="space-y-4">
-          <AvantApres
-            before={projet.galeries[pieceActive].avant}
-            after={projet.galeries[pieceActive].apres}
-            alt={`${projet.galeries[pieceActive].piece} - Avant/Après`}
-          />
-          <div className="rounded-lg bg-sand/50 p-5">
-            <p className="text-sm font-medium text-ink/80">
-              <span className="font-semibold text-brass">
-                {projet.galeries[pieceActive].piece} :
-              </span>{" "}
-              {projet.galeries[pieceActive].details}
-            </p>
-          </div>
+          {projet.galeries[pieceActive] && (
+            <>
+              <AvantApres
+                before={projet.galeries[pieceActive]!.avant}
+                after={projet.galeries[pieceActive]!.apres}
+                alt={`${projet.galeries[pieceActive]!.piece} - Avant/Après`}
+              />
+              <div className="rounded-lg bg-sand/50 p-5">
+                <p className="text-sm font-medium text-ink/80">
+                  <span className="font-semibold text-brass">
+                    {projet.galeries[pieceActive]!.piece} :
+                  </span>{" "}
+                  {projet.galeries[pieceActive]!.details}
+                </p>
+              </div>
+            </>
+          )}
         </div>
       </Reveal>
 

@@ -263,16 +263,19 @@ export default function RoomScene({
     box(1.0, 0.035, 0.28, mat.oak, -1.62, 1.5, -2.32, { cast: false });
     const bookCols = [mat.brass, mat.fabricPine, mat.oakDark, mat.fabricSand];
     for (let i = 0; i < 6; i++) {
-      box(
-        0.05,
-        0.28 - (i % 3) * 0.05,
-        0.2,
-        bookCols[i % 4],
-        -2.0 + i * 0.12,
-        1.2 - ((i % 3) * 0.05) / 2,
-        -2.32,
-        { cast: false }
-      );
+      const material = bookCols[i % 4];
+      if (material) {
+        box(
+          0.05,
+          0.28 - (i % 3) * 0.05,
+          0.2,
+          material,
+          -2.0 + i * 0.12,
+          1.2 - ((i % 3) * 0.05) / 2,
+          -2.32,
+          { cast: false }
+        );
+      }
     }
     // Vase laiton
     const vase = add(geo(new THREE.CylinderGeometry(0.07, 0.09, 0.24, 16)), mat.brass, -1.35, 1.65, -2.32);
@@ -311,17 +314,21 @@ export default function RoomScene({
     box(0.06, 2.2, 0.32, mat.oak, 3.35, 1.1, 0.6);
     for (let i = 0; i < 5; i++)
       box(0.32, 0.035, 1.25, mat.oak, 3.35, 0.3 + i * 0.45, 0, { cast: false });
-    for (let i = 0; i < 8; i++)
-      box(
-        0.2,
-        0.26 - (i % 4) * 0.04,
-        0.055,
-        bookCols[(i + 1) % 4],
-        3.35,
-        0.45 + Math.floor(i / 4) * 0.9 - ((i % 4) * 0.04) / 2,
-        -0.42 + (i % 4) * 0.24,
-        { cast: false }
-      );
+    for (let i = 0; i < 8; i++) {
+      const material = bookCols[(i + 1) % 4];
+      if (material) {
+        box(
+          0.2,
+          0.26 - (i % 4) * 0.04,
+          0.055,
+          material,
+          3.35,
+          0.45 + Math.floor(i / 4) * 0.9 - ((i % 4) * 0.04) / 2,
+          -0.42 + (i % 4) * 0.24,
+          { cast: false }
+        );
+      }
+    }
 
     /* ——— Lampadaire arc (laiton) ——— */
     const lampX = -2.55;

@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import {
   ButtonLink,
   IconArrowRight,
@@ -85,10 +84,11 @@ export default function Home() {
       }, 120);
       return () => clearTimeout(t);
     }
+    return undefined;
   }, []);
 
   const featured = PROJECTS.filter((p) => p.featured)[0] ?? PROJECTS[0];
-  const others = PROJECTS.filter((p) => p.slug !== featured.slug);
+  const others = PROJECTS.filter((p) => p.slug !== featured?.slug);
 
   return (
     <>
@@ -267,15 +267,17 @@ export default function Home() {
           </div>
 
           <div className="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2">
-            <div className="sm:row-span-2">
-              <ProjectCard project={featured} aspect="aspect-[4/5] sm:h-full" />
-            </div>
+            {featured && (
+              <div className="sm:row-span-2">
+                <ProjectCard project={featured} aspect="aspect-[4/5] sm:h-full" />
+              </div>
+            )}
             {others.slice(0, 2).map((p, i) => (
               <ProjectCard key={p.slug} project={p} aspect="aspect-[4/3]" delay={100 + i * 90} />
             ))}
           </div>
 
-          {others.length > 2 && (
+          {others.length > 2 && others[2] && (
             <div className="mt-12">
               <ProjectCard project={others[2]} aspect="aspect-[21/9]" delay={140} />
             </div>

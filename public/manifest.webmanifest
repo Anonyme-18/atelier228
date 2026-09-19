@@ -1,0 +1,11 @@
+{
+  "name": "Atelier 228 — Rénovation & aménagement",
+  "short_name": "Atelier 228",
+  "description": "Rénovation, aménagement intérieur et visite 3D à Lomé.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f2f0e9",
+  "theme_color": "#142821",
+  "lang": "fr",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

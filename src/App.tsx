@@ -5,6 +5,7 @@ import { ButtonLink, Overline, Reveal } from "./components/ui";
 import { usePageMeta } from "./lib/usePageMeta";
 import Contact from "./pages/Contact";
 import Confirmation from "./pages/Confirmation";
+import Outils from "./pages/Outils";
 import Home from "./pages/Home";
 import RealisationDetail from "./pages/RealisationDetail";
 import Realisations from "./pages/Realisations";
@@ -83,6 +84,7 @@ export default function App() {
           <Route path="/a-propos" element={<APropos />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/confirmation" element={<Confirmation />} />
+          <Route path="/outils" element={<Outils />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

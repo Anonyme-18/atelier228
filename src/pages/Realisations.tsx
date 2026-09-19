@@ -20,6 +20,8 @@ export default function Realisations() {
   );
 
   const [filter, setFilter] = useState<Filter>("tous");
+  const [query, setQuery] = useState("");
+  const [onlyTransformations, setOnlyTransformations] = useState(false);
 
   const counts = useMemo(() => {
     const c: Record<string, number> = { tous: PROJECTS.length };
@@ -28,8 +30,15 @@ export default function Realisations() {
   }, []);
 
   const visible = useMemo(
-    () => (filter === "tous" ? PROJECTS : PROJECTS.filter((p) => p.category === filter)),
-    [filter]
+    () =>
+      PROJECTS.filter((p) => {
+        const matchesCategory = filter === "tous" || p.category === filter;
+        const text = `${p.title} ${p.location} ${p.summary}`.toLowerCase();
+        const matchesSearch = !query.trim() || text.includes(query.trim().toLowerCase());
+        const matchesTransformation = !onlyTransformations || Boolean(p.before && p.after);
+        return matchesCategory && matchesSearch && matchesTransformation;
+      }),
+    [filter, onlyTransformations, query]
   );
 
   const filters: { key: Filter; label: string }[] = [
@@ -81,6 +90,29 @@ export default function Realisations() {
                 </span>
               </button>
             ))}
+          </div>
+        </Reveal>
+        <Reveal delay={260}>
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <label className="sr-only" htmlFor="project-search">
+              Rechercher une réalisation
+            </label>
+            <input
+              id="project-search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Rechercher par lieu ou projet"
+              className="h-11 rounded-[3px] border border-ink/15 bg-bone px-4 text-sm text-ink placeholder:text-ink/40 focus:border-brassdark focus:outline-none"
+            />
+            <label className="inline-flex items-center gap-2 text-sm text-ink/70">
+              <input
+                type="checkbox"
+                checked={onlyTransformations}
+                onChange={(e) => setOnlyTransformations(e.target.checked)}
+                className="h-4 w-4 accent-brassdark"
+              />{" "}
+              Avec avant/après uniquement
+            </label>
           </div>
         </Reveal>
       </PageHead>

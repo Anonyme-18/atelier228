@@ -50,6 +50,16 @@ npm run build
 
 Public quote requests are handled by `POST /api/quotes`.
 
+## Interactive features
+
+- Indicative renovation budget calculator
+- Advanced project search and before/after filtering
+- Interactive style recommendation quiz
+- Appointment slot reservation demo
+- Animated four-step project journey
+- Light/dark theme and French/English preference switch
+- Installable Progressive Web App shell
+
 ## Security
 
 - Input is validated on both the client and the server.

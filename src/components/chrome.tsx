@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { BRAND, CONTACT, SERVICES } from "../data/content";
 import { trackPageView, trackPhone, trackWhatsApp } from "../lib/analytics";
+import { usePreferences } from "../lib/preferences";
 import {
   ButtonAnchor,
   ButtonLink,
@@ -67,6 +68,7 @@ export function Header() {
   const [menu, setMenu] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const { language, toggleLanguage, theme, toggleTheme } = usePreferences();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -139,9 +141,34 @@ export function Header() {
             <NavLink to="/contact" className={navLink}>
               Contact
             </NavLink>
+            <NavLink to="/outils" className={navLink}>
+              {language === "fr" ? "Studio" : "Studio"}
+            </NavLink>
           </nav>
 
           <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              className={cx(
+                "hidden text-[11px] font-bold uppercase tracking-widest lg:block",
+                light ? "text-paper/80" : "text-ink/70"
+              )}
+              aria-label="Change language"
+            >
+              {language === "fr" ? "EN" : "FR"}
+            </button>
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className={cx(
+                "hidden h-9 w-9 rounded-full border text-sm lg:block",
+                light ? "border-paper/30 text-paper" : "border-ink/20 text-ink"
+              )}
+              aria-label={theme === "light" ? "Activer le mode sombre" : "Activer le mode clair"}
+            >
+              {theme === "light" ? "☾" : "☀"}
+            </button>
             <ButtonLink
               to="/contact"
               trackSource="header"
@@ -193,6 +220,7 @@ export function Header() {
             { label: "Visite 3D", to: "/visite-3d" },
             { label: "À propos", to: "/a-propos" },
             { label: "Contact", to: "/contact" },
+            { label: "Studio projet", to: "/outils" },
           ].map((item, i) => (
             <Link
               key={item.to}

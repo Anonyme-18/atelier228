@@ -27,6 +27,27 @@ html {
   scroll-behavior: smooth;
 }
 
+html[data-theme="dark"] {
+  --color-paper: #142821;
+  --color-sand: #1d352b;
+  --color-line: #385247;
+  --color-ink: #f2f0e9;
+  --color-bone: #1a3027;
+  --color-okbg: #1e4635;
+  --color-errbg: #4a2b25;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 body {
   background-color: var(--color-paper);
   color: var(--color-ink);

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   BUDGET_OPTIONS,
   PROJECT_TYPES,
@@ -97,6 +98,7 @@ export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
   const [honeypot, setHoneypot] = useState("");
   const submittingRef = useRef(false);
   const mounted = useRef(false);
+  const navigate = useNavigate();
 
   /* Ouverture du formulaire + reprise de brouillon */
   useEffect(() => {
@@ -177,6 +179,9 @@ export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
       // Récupère la page d'origine (HashRouter)
       const sourcePage = window.location.hash.replace("#", "") || "/";
       track("form_submit_success", { ref: result.ref, sourcePage });
+      navigate("/confirmation", {
+        state: { ref: result.ref, fullName: values.fullName, email: values.email },
+      });
       return;
     }
 

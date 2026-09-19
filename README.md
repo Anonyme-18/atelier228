@@ -1,19 +1,19 @@
 # Atelier 228
 
-Site vitrine pour une entreprise de rénovation et d’aménagement intérieur à Lomé, au Togo.
+Showcase website for a renovation and interior design company based in Lomé, Togo.
 
-Le projet présente les services, réalisations, comparatifs avant/après et une visite 3D. Le formulaire de devis enregistre les demandes dans PostgreSQL via une fonction serverless Vercel. L’espace entreprise est protégé par un jeton serveur et ne conserve pas les données clients dans le navigateur.
+The project presents the company’s services, projects, before-and-after comparisons, and an interactive 3D visit. Quote requests are stored in PostgreSQL through a Vercel serverless function. No customer request data is stored in the browser.
 
 ## Stack
 
-- React 18, TypeScript, Vite et Tailwind CSS
-- Three.js pour la visite 3D, chargée à la demande
-- Vercel Functions et Neon PostgreSQL
-- Vitest, ESLint, Prettier et TypeScript strict
+- React 18, TypeScript, Vite, and Tailwind CSS
+- Three.js for the 3D experience, loaded on demand
+- Vercel Functions and Neon PostgreSQL
+- Vitest, ESLint, Prettier, and strict TypeScript
 
-## Développement local
+## Local development
 
-Prérequis : Node.js 18+ et une base PostgreSQL Neon.
+Requirements: Node.js 18+ and a Neon PostgreSQL database.
 
 ```bash
 npm install
@@ -22,42 +22,44 @@ npm run db:setup
 npm run dev
 ```
 
-Sous Windows PowerShell, utilise `Copy-Item .env.example .env.local` à la place de `cp`.
+On Windows PowerShell, use `Copy-Item .env.example .env.local` instead of `cp`.
 
-Variables requises dans `.env.local` :
+Required environment variable:
 
 ```env
 NEON_DATABASE_URL=postgresql://...
 ```
 
-
-## Vérifications
+## Quality checks
 
 ```bash
+npm run format:check
 npm run typecheck
 npm run lint
 npm test -- --run --pool=threads --maxWorkers=1
 npm run build
 ```
 
-## Déploiement Vercel
+## Vercel deployment
 
-1. Pousse le dépôt sur GitHub et importe-le dans Vercel.
-2. Conserve `npm run build` comme commande de build et `dist` comme dossier de sortie.
-3. Configure `NEON_DATABASE_URL` dans les variables d’environnement Vercel.
-4. Lance `npm run db:setup` une seule fois avec les mêmes identifiants pour créer les tables et index.
-5. Vérifie en Preview l’envoi du formulaire de devis avant la Production.
+1. Push the repository to GitHub and import it into Vercel.
+2. Keep `npm run build` as the build command and `dist` as the output directory.
+3. Add `NEON_DATABASE_URL` to the Vercel environment variables.
+4. Run `npm run db:setup` once with the same database credentials to create the tables and indexes.
+5. Test the quote form in a Preview deployment before promoting it to Production.
 
-Les demandes publiques passent par `POST /api/quotes`.
+Public quote requests are handled by `POST /api/quotes`.
 
-## Sécurité
+## Security
 
-- Validation client et serveur, requêtes SQL paramétrées et limitation anti-spam.
-- Données stockées côté serveur, jamais dans `localStorage`.
-- Headers de sécurité appliqués par Vercel et la fonction API.
+- Input is validated on both the client and the server.
+- SQL queries use parameterized values.
+- A honeypot field and IP-based rate limiting reduce spam.
+- Customer requests are stored server-side, never in `localStorage`.
+- Security headers are applied by Vercel and the API function.
 
-Pour signaler une vulnérabilité, ouvre une demande privée auprès du mainteneur plutôt qu’une issue publique.
+For responsible disclosure, contact the maintainer privately instead of opening a public issue.
 
-## Licence
+## License
 
-MIT. Voir [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).

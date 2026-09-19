@@ -9,12 +9,7 @@ import {
   Overline,
   Reveal,
 } from "../components/ui";
-import {
-  serviceBySlug,
-  PROJECTS,
-  AVANT_APRES,
-  type ProjectCategory,
-} from "../data/content";
+import { serviceBySlug, PROJECTS, AVANT_APRES, type ProjectCategory } from "../data/content";
 import { AvantApres } from "../components/AvantApres";
 import { usePageMeta } from "../lib/usePageMeta";
 
@@ -50,7 +45,10 @@ export default function ServiceDetail() {
       <section className="border-b border-ink/10 bg-paper">
         <div className="mx-auto max-w-7xl px-5 pb-14 pt-28 sm:px-8 sm:pt-36">
           <Reveal>
-            <nav aria-label="Fil d'Ariane" className="text-[12px] uppercase tracking-[0.16em] text-ink/50">
+            <nav
+              aria-label="Fil d'Ariane"
+              className="text-[12px] uppercase tracking-[0.16em] text-ink/50"
+            >
               <Link to="/services" className="link-line hover:text-ink">
                 Services
               </Link>
@@ -61,9 +59,7 @@ export default function ServiceDetail() {
           <div className="mt-6 grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-7">
               <Reveal delay={60}>
-                <Overline>
-                  {service.index} · Prestation
-                </Overline>
+                <Overline>{service.index} · Prestation</Overline>
               </Reveal>
               <Reveal delay={120}>
                 <h1 className="mt-4 font-display text-4xl font-medium leading-[1.05] text-ink sm:text-5xl lg:text-[3.4rem]">
@@ -114,8 +110,7 @@ export default function ServiceDetail() {
             </Reveal>
             <Reveal delay={70}>
               <h2 className="mt-4 font-display text-3xl font-medium leading-tight text-ink sm:text-4xl">
-                Tout est prévu,{" "}
-                <em className="italic text-brassdark">rien n'est improvisé.</em>
+                Tout est prévu, <em className="italic text-brassdark">rien n'est improvisé.</em>
               </h2>
             </Reveal>
             <Reveal delay={140}>
@@ -167,22 +162,27 @@ export default function ServiceDetail() {
 
       {/* ——— Avant / Après (preuve de transformation) ——— */}
       {AVANT_APRES.length > 0 && (
-        <section className="border-b border-ink/10 bg-night py-16 text-paper lg:py-24" aria-labelledby="avap-svc">
+        <section
+          className="border-b border-ink/10 bg-night py-16 text-paper lg:py-24"
+          aria-labelledby="avap-svc"
+        >
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
               <div className="lg:col-span-5">
                 <Reveal>
                   <Overline tone="light">Avant / Après</Overline>
-                  <h2 id="avap-svc" className="mt-4 font-display text-3xl font-medium leading-tight sm:text-4xl">
-                    On ne promet pas,{" "}
-                    <em className="italic text-brasssoft">on transforme.</em>
+                  <h2
+                    id="avap-svc"
+                    className="mt-4 font-display text-3xl font-medium leading-tight sm:text-4xl"
+                  >
+                    On ne promet pas, <em className="italic text-brasssoft">on transforme.</em>
                   </h2>
                 </Reveal>
                 <Reveal delay={120}>
                   <p className="mt-5 leading-relaxed text-paper/70">
-                    Faites glisser le curseur sur la photo : à gauche l'état
-                    d'origine, à droite le chantier livré. C'est notre façon la
-                    plus honnête de montrer ce que nous savons faire.
+                    Faites glisser le curseur sur la photo : à gauche l'état d'origine, à droite le
+                    chantier livré. C'est notre façon la plus honnête de montrer ce que nous savons
+                    faire.
                   </p>
                 </Reveal>
                 <Reveal delay={200}>
@@ -192,7 +192,8 @@ export default function ServiceDetail() {
                         <span className="mt-1.5 h-2 w-2 shrink-0 rotate-45 bg-brasssoft" />
                         <span className="text-sm text-paper/75">
                           <strong className="font-semibold text-brasssoft">{p.title}</strong>
-                          {" — "}{p.note}
+                          {" — "}
+                          {p.note}
                         </span>
                       </li>
                     ))}
@@ -212,12 +213,18 @@ export default function ServiceDetail() {
       )}
 
       {/* ——— Exemples de réalisations (ou état éditorial propre) ——— */}
-      <section className="border-y border-ink/10 bg-sand/60 py-16 lg:py-24" aria-labelledby="ex-svc">
+      <section
+        className="border-y border-ink/10 bg-sand/60 py-16 lg:py-24"
+        aria-labelledby="ex-svc"
+      >
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
             <Reveal>
               <Overline>Exemples de réalisations</Overline>
-              <h2 id="ex-svc" className="mt-4 font-display text-3xl font-medium text-ink sm:text-4xl">
+              <h2
+                id="ex-svc"
+                className="mt-4 font-display text-3xl font-medium text-ink sm:text-4xl"
+              >
                 Ce type de projet,{" "}
                 <em className="italic text-brassdark">nous l'avons déjà livré.</em>
               </h2>
@@ -248,11 +255,15 @@ export default function ServiceDetail() {
                     Les photos de ce type de chantier arrivent bientôt.
                   </h3>
                   <p className="mt-2 max-w-xl text-ink/65">
-                    En attendant, la meilleure façon de juger notre travail reste
-                    la visite d'un chantier en cours — proposez-nous votre projet.
+                    En attendant, la meilleure façon de juger notre travail reste la visite d'un
+                    chantier en cours — proposez-nous votre projet.
                   </p>
                 </div>
-                <ButtonLink to={quoteTo} trackSource={`service_${service.slug}_vide`} className="shrink-0">
+                <ButtonLink
+                  to={quoteTo}
+                  trackSource={`service_${service.slug}_vide`}
+                  className="shrink-0"
+                >
                   Demander un devis
                 </ButtonLink>
               </div>
@@ -282,8 +293,7 @@ export default function ServiceDetail() {
             <Reveal delay={100}>
               <Overline>Le déroulement</Overline>
               <h2 className="mt-4 font-display text-3xl font-medium text-ink sm:text-4xl">
-                Quatre étapes,{" "}
-                <em className="italic text-brassdark">zéro flou.</em>
+                Quatre étapes, <em className="italic text-brassdark">zéro flou.</em>
               </h2>
             </Reveal>
             <div className="mt-8">

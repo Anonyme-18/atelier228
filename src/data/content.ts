@@ -29,25 +29,43 @@ export const CONTACT = {
    réelles des chantiers) ————— */
 const IMG = {
   hero: "https://image.qwenlm.ai/generated-images/0dd2dcce-e36b-4781-8252-6de7d81ee4d9/_result.png",
-  renovation: "https://image.qwenlm.ai/generated-images/388c7f12-9fce-43e1-bc74-1ad872f4d430/_result.png",
-  amenagement: "https://image.qwenlm.ai/generated-images/65aa29e4-fccf-47ae-ab00-1a5cfd859d6d/_result.png",
-  cuisine: "https://image.qwenlm.ai/generated-images/daa6483d-7139-4b81-b3fa-9f1188009efa/_result.png",
-  salleDeBain: "https://image.qwenlm.ai/generated-images/bee62600-a030-449f-bad8-e18741bd9b03/_result.png",
-  villaBaguida: "https://image.qwenlm.ai/generated-images/fa44c917-a132-4c3a-8897-fffeea505811/_result.png",
-  cuisineAgoe: "https://image.qwenlm.ai/generated-images/ab5a6364-6731-4742-a895-00541de36526/_result.png",
-  sdbCacaveli: "https://image.qwenlm.ai/generated-images/7890f02d-df12-4f69-ad06-b2fd835d1b24/_result.png",
-  appartementBd30: "https://image.qwenlm.ai/generated-images/f3773e70-8759-40d4-b6b5-01b52c4f0b38/_result.png",
-  craft: "https://image.qwenlm.ai/generated-images/0cdbddb3-6493-4b7b-84bd-16fdd0a3d91d/_result.png",
-  avantSejour: "https://image.qwenlm.ai/generated-images/e4fdfdb6-c429-46fd-a374-42d188a37e6f/_result.png",
+  renovation:
+    "https://image.qwenlm.ai/generated-images/388c7f12-9fce-43e1-bc74-1ad872f4d430/_result.png",
+  amenagement:
+    "https://image.qwenlm.ai/generated-images/65aa29e4-fccf-47ae-ab00-1a5cfd859d6d/_result.png",
+  cuisine:
+    "https://image.qwenlm.ai/generated-images/daa6483d-7139-4b81-b3fa-9f1188009efa/_result.png",
+  salleDeBain:
+    "https://image.qwenlm.ai/generated-images/bee62600-a030-449f-bad8-e18741bd9b03/_result.png",
+  villaBaguida:
+    "https://image.qwenlm.ai/generated-images/fa44c917-a132-4c3a-8897-fffeea505811/_result.png",
+  cuisineAgoe:
+    "https://image.qwenlm.ai/generated-images/ab5a6364-6731-4742-a895-00541de36526/_result.png",
+  sdbCacaveli:
+    "https://image.qwenlm.ai/generated-images/7890f02d-df12-4f69-ad06-b2fd835d1b24/_result.png",
+  appartementBd30:
+    "https://image.qwenlm.ai/generated-images/f3773e70-8759-40d4-b6b5-01b52c4f0b38/_result.png",
+  craft:
+    "https://image.qwenlm.ai/generated-images/0cdbddb3-6493-4b7b-84bd-16fdd0a3d91d/_result.png",
+  avantSejour:
+    "https://image.qwenlm.ai/generated-images/e4fdfdb6-c429-46fd-a374-42d188a37e6f/_result.png",
   // Avant/Après - Rénovation complète Villa Baguida
-  avantCuisine: "https://image.qwenlm.ai/generated-images/79073e46-40b3-445b-a3bc-007dae2bc66f/_result.png",
-  apresCuisine: "https://image.qwenlm.ai/generated-images/16be9dae-bf94-41ae-8476-a94c8bdefca1/_result.png",
-  avantChambre: "https://image.qwenlm.ai/generated-images/b54edc36-9750-4545-96bd-190fe95f42f2/_result.png",
-  apresChambre: "https://image.qwenlm.ai/generated-images/d7493910-ed62-43a6-b3b5-ad3714ad1fad/_result.png",
-  avantSdb: "https://image.qwenlm.ai/generated-images/6b05d210-ff1c-4fca-b301-1a82c80b6998/_result.png",
-  apresSdb: "https://image.qwenlm.ai/generated-images/fcf7a532-adfd-4d87-8f85-55a0f9941599/_result.png",
-  avantEntree: "https://image.qwenlm.ai/generated-images/f8c4aa98-0940-4b14-a61c-6a02a24901ee/_result.png",
-  apresEntree: "https://image.qwenlm.ai/generated-images/9ac8d549-60a4-4989-b55b-db6b194a538e/_result.png",
+  avantCuisine:
+    "https://image.qwenlm.ai/generated-images/79073e46-40b3-445b-a3bc-007dae2bc66f/_result.png",
+  apresCuisine:
+    "https://image.qwenlm.ai/generated-images/16be9dae-bf94-41ae-8476-a94c8bdefca1/_result.png",
+  avantChambre:
+    "https://image.qwenlm.ai/generated-images/b54edc36-9750-4545-96bd-190fe95f42f2/_result.png",
+  apresChambre:
+    "https://image.qwenlm.ai/generated-images/d7493910-ed62-43a6-b3b5-ad3714ad1fad/_result.png",
+  avantSdb:
+    "https://image.qwenlm.ai/generated-images/6b05d210-ff1c-4fca-b301-1a82c80b6998/_result.png",
+  apresSdb:
+    "https://image.qwenlm.ai/generated-images/fcf7a532-adfd-4d87-8f85-55a0f9941599/_result.png",
+  avantEntree:
+    "https://image.qwenlm.ai/generated-images/f8c4aa98-0940-4b14-a61c-6a02a24901ee/_result.png",
+  apresEntree:
+    "https://image.qwenlm.ai/generated-images/9ac8d549-60a4-4989-b55b-db6b194a538e/_result.png",
 };
 
 export const IMAGES = IMG;
@@ -96,37 +114,43 @@ export const PROJETS_RENOVATION: ProjetRenovation[] = [
     id: "villa-baguida-complete",
     titre: "Rénovation complète — Villa de Baguida",
     lieu: "Baguida, Lomé",
-    description: "Rénovation intégrale d'une villa de 180m² : 5 pièces transformées en 3 mois, de l'entrée au salon en passant par la cuisine, la chambre principale et la salle de bain.",
+    description:
+      "Rénovation intégrale d'une villa de 180m² : 5 pièces transformées en 3 mois, de l'entrée au salon en passant par la cuisine, la chambre principale et la salle de bain.",
     galeries: [
       {
         piece: "Salon",
         avant: IMG.avantSejour,
         apres: IMG.hero,
-        details: "Enduits repris, sol en chêne massif, ouvertures agrandies, menuiseries sur mesure en laiton.",
+        details:
+          "Enduits repris, sol en chêne massif, ouvertures agrandies, menuiseries sur mesure en laiton.",
       },
       {
         piece: "Cuisine",
         avant: IMG.avantCuisine,
         apres: IMG.apresCuisine,
-        details: "Cuisine entièrement repensée : îlot central en chêne, plan de travail en granit, électroménager intégré, éclairage LED sous les meubles hauts.",
+        details:
+          "Cuisine entièrement repensée : îlot central en chêne, plan de travail en granit, électroménager intégré, éclairage LED sous les meubles hauts.",
       },
       {
         piece: "Chambre principale",
         avant: IMG.avantChambre,
         apres: IMG.apresChambre,
-        details: "Tête de lit sur mesure en chêne avec éclairage intégré, dressing aménagé, parquet massif, rideaux occultants motorisés.",
+        details:
+          "Tête de lit sur mesure en chêne avec éclairage intégré, dressing aménagé, parquet massif, rideaux occultants motorisés.",
       },
       {
         piece: "Salle de bain",
         avant: IMG.avantSdb,
         apres: IMG.apresSdb,
-        details: "Douche à l'italienne avec paroi en verre, double vasque en pierre naturelle, robinetterie laiton brossé, miroir LED antibuée.",
+        details:
+          "Douche à l'italienne avec paroi en verre, double vasque en pierre naturelle, robinetterie laiton brossé, miroir LED antibuée.",
       },
       {
         piece: "Entrée",
         avant: IMG.avantEntree,
         apres: IMG.apresEntree,
-        details: "Porte d'entrée en chêne massif, placard intégré avec rangements optimisés, sol en terrazzo, éclairage d'ambiance.",
+        details:
+          "Porte d'entrée en chêne massif, placard intégré avec rangements optimisés, sol en terrazzo, éclairage d'ambiance.",
       },
     ],
   },
@@ -286,8 +310,7 @@ export const SERVICES: Service[] = [
     description:
       "Une salle de bain réussie repose sur des détails invisibles : étanchéité parfaite, pentes d'évacuation correctes, ventilation efficace. Nous refaisons vos salles d'eau de bout en bout, avec des matériaux qui vieillissent bien et des finitions soignées — parce que c'est la pièce où l'à-peu-près se paie le plus cher.",
     image: IMG.salleDeBain,
-    imageAlt:
-      "Salle de bain contemporaine avec douche à l'italienne et robinetterie laiton",
+    imageAlt: "Salle de bain contemporaine avec douche à l'italienne et robinetterie laiton",
     benefits: [
       "Étanchéité et évacuations traitées dans les règles",
       "Douche à l'italienne, baignoire, double vasque",
@@ -320,15 +343,10 @@ export const SERVICES: Service[] = [
   },
 ];
 
-export const serviceBySlug = (slug: string) =>
-  SERVICES.find((s) => s.slug === slug);
+export const serviceBySlug = (slug: string) => SERVICES.find((s) => s.slug === slug);
 
 /* ————— Réalisations ————— */
-export type ProjectCategory =
-  | "renovation"
-  | "amenagement"
-  | "cuisine"
-  | "salle-de-bain";
+export type ProjectCategory = "renovation" | "amenagement" | "cuisine" | "salle-de-bain";
 
 export interface GalleryItem {
   src: string;
@@ -403,7 +421,8 @@ export const PROJECTS: Project[] = [
     ],
     before: IMG.avantSejour,
     after: IMG.hero,
-    beforeAfterNote: "Rénovation complète du salon : enduits repris, parquet en chêne massif, menuiseries sur mesure et éclairage intégré.",
+    beforeAfterNote:
+      "Rénovation complète du salon : enduits repris, parquet en chêne massif, menuiseries sur mesure et éclairage intégré.",
   },
   {
     slug: "cuisine-agoe",
@@ -448,7 +467,8 @@ export const PROJECTS: Project[] = [
     ],
     before: IMG.avantCuisine,
     after: IMG.apresCuisine,
-    beforeAfterNote: "Cuisine entièrement repensée : îlot central en chêne, plan de travail en granit, électroménager intégré et éclairage LED sous les meubles hauts.",
+    beforeAfterNote:
+      "Cuisine entièrement repensée : îlot central en chêne, plan de travail en granit, électroménager intégré et éclairage LED sous les meubles hauts.",
   },
   {
     slug: "sdb-cacaveli",
@@ -493,7 +513,8 @@ export const PROJECTS: Project[] = [
     ],
     before: IMG.avantSdb,
     after: IMG.apresSdb,
-    beforeAfterNote: "Salle de bain transformée : douche à l'italienne avec paroi en verre, double vasque en pierre naturelle, robinetterie laiton brossé et miroir LED antibuée.",
+    beforeAfterNote:
+      "Salle de bain transformée : douche à l'italienne avec paroi en verre, double vasque en pierre naturelle, robinetterie laiton brossé et miroir LED antibuée.",
   },
   {
     slug: "appartement-bd30",
@@ -538,12 +559,12 @@ export const PROJECTS: Project[] = [
     ],
     before: IMG.avantChambre,
     after: IMG.apresChambre,
-    beforeAfterNote: "Chambre optimisée : tête de lit sur mesure en chêne avec éclairage intégré, dressing aménagé, parquet massif et rideaux occultants motorisés.",
+    beforeAfterNote:
+      "Chambre optimisée : tête de lit sur mesure en chêne avec éclairage intégré, dressing aménagé, parquet massif et rideaux occultants motorisés.",
   },
 ];
 
-export const projectBySlug = (slug: string) =>
-  PROJECTS.find((p) => p.slug === slug);
+export const projectBySlug = (slug: string) => PROJECTS.find((p) => p.slug === slug);
 
 export const CATEGORY_LABELS: Record<ProjectCategory, string> = {
   renovation: "Rénovation",

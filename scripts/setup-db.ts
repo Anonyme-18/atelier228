@@ -1,13 +1,14 @@
 import { neon } from "@neondatabase/serverless";
 import * as dotenv from "dotenv";
 
+dotenv.config({ path: ".env.local" });
 dotenv.config();
 
 async function setupDatabase() {
-  const databaseUrl = process.env.VITE_NEON_DATABASE_URL;
+  const databaseUrl = process.env.NEON_DATABASE_URL;
   
   if (!databaseUrl) {
-    console.error("❌ VITE_NEON_DATABASE_URL not found in .env.local");
+    console.error("❌ NEON_DATABASE_URL not found in .env.local");
     process.exit(1);
   }
 

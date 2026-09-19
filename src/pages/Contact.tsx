@@ -138,9 +138,7 @@ export default function Contact() {
                       <span className="font-display text-xl italic text-brassdark">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="text-[14.5px] leading-relaxed text-ink/75">
-                        {step}
-                      </span>
+                      <span className="text-[14.5px] leading-relaxed text-ink/75">{step}</span>
                     </li>
                   ))}
                 </ol>
@@ -176,7 +174,11 @@ export default function Contact() {
             <Reveal delay={180}>
               <p className="mt-5 text-center text-xs text-ink/45">
                 Vous préférez le contact direct&nbsp;?{" "}
-                <a href={CONTACT.phoneHref} onClick={trackPhone} className="link-line font-semibold text-brassdark">
+                <a
+                  href={CONTACT.phoneHref}
+                  onClick={trackPhone}
+                  className="link-line font-semibold text-brassdark"
+                >
                   Appelez le {CONTACT.phoneDisplay}
                 </a>{" "}
                 ou{" "}

@@ -1,12 +1,5 @@
 import { CTABand } from "../components/cards";
-import {
-  ButtonLink,
-  IconCheck,
-  Img,
-  Overline,
-  Reveal,
-  SectionHead,
-} from "../components/ui";
+import { ButtonLink, IconCheck, Img, Overline, Reveal, SectionHead } from "../components/ui";
 import { IMAGES } from "../data/content";
 import { usePageMeta } from "../lib/usePageMeta";
 
@@ -32,10 +25,9 @@ export default function APropos() {
           </Reveal>
           <Reveal delay={160}>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-paper/70 sm:text-lg">
-              Atelier 228 pilote votre projet de rénovation ou d'aménagement
-              intérieur de bout en bout. Pas de sous-traitance dispersée, pas de
-              surprises en cours de chantier : une équipe coordonnée, un devis
-              détaillé poste par poste, des finitions soignées.
+              Atelier 228 pilote votre projet de rénovation ou d'aménagement intérieur de bout en
+              bout. Pas de sous-traitance dispersée, pas de surprises en cours de chantier : une
+              équipe coordonnée, un devis détaillé poste par poste, des finitions soignées.
             </p>
           </Reveal>
           <Reveal delay={240}>
@@ -60,8 +52,7 @@ export default function APropos() {
                 overline="Notre approche"
                 title={
                   <>
-                    La rénovation se pense{" "}
-                    <em className="italic text-brassdark">en amont.</em>
+                    La rénovation se pense <em className="italic text-brassdark">en amont.</em>
                   </>
                 }
                 intro="Un chantier réussi, c'est 80 % de préparation. Nous prenons le temps de comprendre votre usage, vos contraintes, votre budget — avant de poser le premier matériau."
@@ -94,12 +85,8 @@ export default function APropos() {
                       <IconCheck className="h-5 w-5" />
                     </span>
                     <div>
-                      <h3 className="font-display text-xl font-medium text-ink">
-                        {item.title}
-                      </h3>
-                      <p className="mt-2 text-[15px] leading-relaxed text-ink/65">
-                        {item.text}
-                      </p>
+                      <h3 className="font-display text-xl font-medium text-ink">{item.title}</h3>
+                      <p className="mt-2 text-[15px] leading-relaxed text-ink/65">{item.text}</p>
                     </div>
                   </li>
                 </Reveal>
@@ -128,8 +115,7 @@ export default function APropos() {
             overline="L'équipe"
             title={
               <>
-                Des artisans,{" "}
-                <em className="italic text-brassdark">pas des sous-traitants.</em>
+                Des artisans, <em className="italic text-brassdark">pas des sous-traitants.</em>
               </>
             }
             intro="Notre équipe coordonne les corps de métier et garantit la qualité d'exécution. Chaque intervenant est sélectionné pour sa maîtrise du détail."
@@ -160,9 +146,9 @@ export default function APropos() {
 
         <Reveal delay={200}>
           <p className="mt-8 rounded-[4px] border border-brassdark/25 bg-sand/70 p-5 text-sm leading-relaxed text-ink/60">
-            <strong className="text-brassdark">Contenu à compléter :</strong>{" "}
-            ajoutez ici les photos et biographies des membres de l'équipe. Cette
-            section humanise l'entreprise et renforce la confiance.
+            <strong className="text-brassdark">Contenu à compléter :</strong> ajoutez ici les photos
+            et biographies des membres de l'équipe. Cette section humanise l'entreprise et renforce
+            la confiance.
           </p>
         </Reveal>
       </section>
@@ -175,8 +161,7 @@ export default function APropos() {
               overline="Certifications & Partenaires"
               title={
                 <>
-                  Des garanties,{" "}
-                  <em className="italic text-brassdark">pas des promesses.</em>
+                  Des garanties, <em className="italic text-brassdark">pas des promesses.</em>
                 </>
               }
               intro="Nos qualifications et partenariats attestent de notre maîtrise technique et de notre engagement qualité."
@@ -200,9 +185,9 @@ export default function APropos() {
 
           <Reveal delay={200}>
             <p className="mt-8 rounded-[4px] border border-brassdark/25 bg-paper p-5 text-sm leading-relaxed text-ink/60">
-              <strong className="text-brassdark">Contenu à compléter :</strong>{" "}
-              ajoutez ici les logos et noms des certifications, qualifications
-              et partenaires. Cette section rassure sur le professionnalisme.
+              <strong className="text-brassdark">Contenu à compléter :</strong> ajoutez ici les
+              logos et noms des certifications, qualifications et partenaires. Cette section rassure
+              sur le professionnalisme.
             </p>
           </Reveal>
         </div>
@@ -248,11 +233,10 @@ export default function APropos() {
 
         <Reveal delay={200}>
           <p className="mt-8 rounded-[4px] border border-brassdark/25 bg-sand/70 p-5 text-sm leading-relaxed text-ink/60">
-            <strong className="text-brassdark">Contenu à compléter :</strong>{" "}
-            remplacez ces placeholders par de vrais témoignages clients. Les
-            avis authentiques sont l'un des leviers de confiance les plus
-            puissants. Demandez à vos clients satisfaits s'ils acceptent de
-            partager leur expérience.
+            <strong className="text-brassdark">Contenu à compléter :</strong> remplacez ces
+            placeholders par de vrais témoignages clients. Les avis authentiques sont l'un des
+            leviers de confiance les plus puissants. Demandez à vos clients satisfaits s'ils
+            acceptent de partager leur expérience.
           </p>
         </Reveal>
       </section>
@@ -263,8 +247,7 @@ export default function APropos() {
           <Reveal>
             <Overline tone="light">En chiffres</Overline>
             <h2 className="mt-4 font-display text-3xl font-medium sm:text-4xl">
-              Des résultats{" "}
-              <em className="italic text-brasssoft">mesurables.</em>
+              Des résultats <em className="italic text-brasssoft">mesurables.</em>
             </h2>
           </Reveal>
 
@@ -288,10 +271,9 @@ export default function APropos() {
 
           <Reveal delay={200}>
             <p className="mt-10 rounded-[4px] border border-brasssoft/25 bg-pine/30 p-5 text-sm leading-relaxed text-paper/60">
-              <strong className="text-brasssoft">Contenu à compléter :</strong>{" "}
-              remplacez les "—" par des chiffres réels et vérifiables. Les
-              chiffres concrets renforcent la crédibilité — mais seulement
-              s'ils sont authentiques.
+              <strong className="text-brasssoft">Contenu à compléter :</strong> remplacez les "—"
+              par des chiffres réels et vérifiables. Les chiffres concrets renforcent la crédibilité
+              — mais seulement s'ils sont authentiques.
             </p>
           </Reveal>
         </div>
@@ -301,8 +283,7 @@ export default function APropos() {
         source="apropos_bas"
         title={
           <>
-            Prêt à démarrer{" "}
-            <em className="italic text-brasssoft">votre projet&nbsp;?</em>
+            Prêt à démarrer <em className="italic text-brasssoft">votre projet&nbsp;?</em>
           </>
         }
         text="Visite sur site gratuite, devis détaillé poste par poste, sans engagement."

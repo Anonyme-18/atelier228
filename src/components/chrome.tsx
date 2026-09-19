@@ -29,18 +29,8 @@ export function LogoMark({ className = "h-9 w-9" }: { className?: string }) {
   return (
     <svg viewBox="0 0 32 32" className={className} aria-hidden="true">
       <rect width="32" height="32" rx="4" className="fill-deep" />
-      <path
-        d="M7 24V11l9-4 9 4v13"
-        fill="none"
-        stroke="var(--color-brasssoft)"
-        strokeWidth="2"
-      />
-      <path
-        d="M12 24v-7h8v7"
-        fill="none"
-        stroke="var(--color-paper)"
-        strokeWidth="2"
-      />
+      <path d="M7 24V11l9-4 9 4v13" fill="none" stroke="var(--color-brasssoft)" strokeWidth="2" />
+      <path d="M12 24v-7h8v7" fill="none" stroke="var(--color-paper)" strokeWidth="2" />
     </svg>
   );
 }
@@ -98,8 +88,7 @@ export function Header() {
 
   const goEntreprise = () => {
     setMenu(false);
-    const onHome =
-      window.location.hash === "#/" || window.location.hash === "";
+    const onHome = window.location.hash === "#/" || window.location.hash === "";
     if (onHome) {
       setTimeout(
         () =>
@@ -232,11 +221,7 @@ export function Header() {
           </Link>
 
           <div className="rise-in mt-8" style={{ animationDelay: "430ms" }}>
-            <ButtonLink
-              to="/contact"
-              trackSource="menu_mobile"
-              className="w-full"
-            >
+            <ButtonLink to="/contact" trackSource="menu_mobile" className="w-full">
               Demander un devis
             </ButtonLink>
             <div className="mt-5 flex gap-3">
@@ -271,8 +256,7 @@ export function Header() {
 /* ————— CTA mobile flottant (pages services & réalisations) ————— */
 export function MobileCtaBar() {
   const { pathname } = useLocation();
-  const visible =
-    pathname.startsWith("/services") || pathname.startsWith("/realisations");
+  const visible = pathname.startsWith("/services") || pathname.startsWith("/realisations");
   if (!visible) return null;
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-paper/10 bg-deep/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md lg:hidden">
@@ -319,14 +303,12 @@ export function Footer() {
         <div className="lg:col-span-4">
           <div className="flex items-center gap-3">
             <LogoMark />
-            <span className="text-[15px] font-bold tracking-[0.18em]">
-              ATELIER&nbsp;228
-            </span>
+            <span className="text-[15px] font-bold tracking-[0.18em]">ATELIER&nbsp;228</span>
           </div>
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-paper/60">
-            Entreprise de rénovation et d'aménagement intérieur basée à Lomé.
-            Nous concevons et réalisons des espaces durables — maisons,
-            appartements, commerces — avec un souci constant du détail.
+            Entreprise de rénovation et d'aménagement intérieur basée à Lomé. Nous concevons et
+            réalisons des espaces durables — maisons, appartements, commerces — avec un souci
+            constant du détail.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <ButtonAnchor
@@ -403,7 +385,11 @@ export function Footer() {
             </li>
             <li className="flex items-start gap-2.5">
               <IconPhone className="mt-0.5 h-4 w-4 shrink-0 text-brasssoft" />
-              <a href={CONTACT.phoneHref} className="link-line hover:text-paper" onClick={trackPhone}>
+              <a
+                href={CONTACT.phoneHref}
+                className="link-line hover:text-paper"
+                onClick={trackPhone}
+              >
                 {CONTACT.phoneDisplay}
               </a>
             </li>
@@ -417,15 +403,9 @@ export function Footer() {
       <div className="border-t border-paper/10">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-3 px-5 py-6 text-xs text-paper/45 sm:flex-row sm:items-center sm:px-8">
           <p>
-            © {new Date().getFullYear()} {BRAND.name} — {BRAND.baseline},{" "}
-            {BRAND.city}, {BRAND.country}
+            © {new Date().getFullYear()} {BRAND.name} — {BRAND.baseline}, {BRAND.city},{" "}
+            {BRAND.country}
           </p>
-          <Link
-            to="/admin"
-            className="link-line uppercase tracking-[0.16em] hover:text-paper/80"
-          >
-            Espace entreprise
-          </Link>
         </div>
       </div>
     </footer>
@@ -435,8 +415,7 @@ export function Footer() {
 /* ————— Layout global ————— */
 export function Layout() {
   const { pathname } = useLocation();
-  const withCtaBar =
-    pathname.startsWith("/services") || pathname.startsWith("/realisations");
+  const withCtaBar = pathname.startsWith("/services") || pathname.startsWith("/realisations");
   return (
     <div className="grain flex min-h-screen flex-col">
       <Header />

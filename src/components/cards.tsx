@@ -1,20 +1,8 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import {
-  CATEGORY_LABELS,
-  PROCESS,
-  type Project,
-} from "../data/content";
+import { CATEGORY_LABELS, PROCESS, type Project } from "../data/content";
 import { trackCta } from "../lib/analytics";
-import {
-  ButtonLink,
-  cx,
-  IconArrowRight,
-  IconArrowUpRight,
-  Img,
-  Overline,
-  Reveal,
-} from "./ui";
+import { ButtonLink, cx, IconArrowRight, IconArrowUpRight, Img, Overline, Reveal } from "./ui";
 
 /* ═══════════ Carte réalisation ═══════════ */
 
@@ -35,18 +23,22 @@ export function ProjectCard({
         aria-label={`${project.title} — voir le projet`}
       >
         <div className="relative overflow-hidden bg-sand">
-          <Img
-            src={project.image}
-            alt={project.imageAlt}
-            ratio={aspect}
-            hover
-          />
+          <Img src={project.image} alt={project.imageAlt} ratio={aspect} hover />
           <span className="absolute left-4 top-4 rounded-[3px] bg-deep/85 px-3 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-paper backdrop-blur-sm">
             {CATEGORY_LABELS[project.category]}
           </span>
           {project.before && project.after && (
             <span className="absolute right-4 top-4 flex items-center gap-1.5 rounded-[3px] bg-brass px-3 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-deep backdrop-blur-sm">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3 w-3" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-3 w-3"
+                aria-hidden="true"
+              >
                 <path d="m9 6-4 6 4 6" />
                 <path d="m15 6 4 6-4 6" />
               </svg>
@@ -195,16 +187,12 @@ export function ServiceLine({
           aria-label={`${title} — découvrir la prestation`}
         />
         <div className="flex items-baseline gap-4 sm:col-span-4">
-          <span className="font-display text-sm italic text-brassdark">
-            {index}
-          </span>
+          <span className="font-display text-sm italic text-brassdark">{index}</span>
           <h3 className="font-display text-2xl font-medium text-ink transition-transform duration-300 group-hover:translate-x-1.5 sm:text-[1.7rem]">
             {title}
           </h3>
         </div>
-        <p className="text-sm leading-relaxed text-ink/65 sm:col-span-5">
-          {short}
-        </p>
+        <p className="text-sm leading-relaxed text-ink/65 sm:col-span-5">{short}</p>
         <div className="flex items-center gap-5 sm:col-span-3 sm:justify-end">
           <div className="hidden w-24 shrink-0 overflow-hidden rounded-[3px] sm:block">
             <Img src={image} alt={imageAlt} ratio="aspect-[4/3]" hover />

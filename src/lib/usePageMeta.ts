@@ -6,9 +6,7 @@ export function usePageMeta(title: string, description: string) {
     document.title = title;
 
     const ensureMeta = (attr: "name" | "property", key: string) => {
-      let el = document.head.querySelector<HTMLMetaElement>(
-        `meta[${attr}="${key}"]`
-      );
+      let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
       if (!el) {
         el = document.createElement("meta");
         el.setAttribute(attr, key);

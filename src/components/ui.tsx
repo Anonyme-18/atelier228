@@ -1,10 +1,4 @@
-import {
-  useEffect,
-  useRef,
-  useState,
-  type CSSProperties,
-  type ReactNode,
-} from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { trackCta } from "../lib/analytics";
 
@@ -13,18 +7,11 @@ export function cx(...parts: Array<string | false | null | undefined>) {
 }
 
 export const prefersReducedMotion = () =>
-  typeof window !== "undefined" &&
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ═══════════ Icônes dessinées sur mesure ═══════════ */
 
-function I({
-  children,
-  className = "h-5 w-5",
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+function I({ children, className = "h-5 w-5" }: { children: ReactNode; className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -166,26 +153,9 @@ export const IconRuler = ({ className }: { className?: string }) => (
   </I>
 );
 export const IconSpinner = ({ className = "h-5 w-5" }: { className?: string }) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    className={cx(className, "animate-spin")}
-    aria-hidden="true"
-  >
-    <circle
-      cx="12"
-      cy="12"
-      r="9"
-      stroke="currentColor"
-      strokeOpacity="0.25"
-      strokeWidth="2.5"
-    />
-    <path
-      d="M21 12a9 9 0 0 0-9-9"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-    />
+  <svg viewBox="0 0 24 24" fill="none" className={cx(className, "animate-spin")} aria-hidden="true">
+    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeOpacity="0.25" strokeWidth="2.5" />
+    <path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
   </svg>
 );
 
@@ -267,10 +237,12 @@ export function LinesReveal({
               "block transition-transform duration-[850ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
               lineClassName
             )}
-            style={{
-              transform: on ? "translateY(0)" : "translateY(112%)",
-              transitionDelay: `${i * stagger}ms`,
-            } as CSSProperties}
+            style={
+              {
+                transform: on ? "translateY(0)" : "translateY(112%)",
+                transitionDelay: `${i * stagger}ms`,
+              } as CSSProperties
+            }
           >
             {line}
           </span>
@@ -299,12 +271,7 @@ export function Overline({
         className
       )}
     >
-      <span
-        className={cx(
-          "h-px w-8",
-          tone === "light" ? "bg-brasssoft/70" : "bg-brassdark/60"
-        )}
-      />
+      <span className={cx("h-px w-8", tone === "light" ? "bg-brasssoft/70" : "bg-brassdark/60")} />
       {children}
     </p>
   );
@@ -365,8 +332,7 @@ const btnVariants: Record<BtnVariant, string> = {
   primary: "bg-brass text-deep hover:bg-brasssoft active:translate-y-px",
   dark: "bg-deep text-paper hover:bg-pine active:translate-y-px",
   light: "bg-paper text-deep hover:bg-sand active:translate-y-px",
-  outlineDark:
-    "border border-ink/25 text-ink hover:border-ink hover:bg-ink hover:text-paper",
+  outlineDark: "border border-ink/25 text-ink hover:border-ink hover:bg-ink hover:text-paper",
   outlineLight:
     "border border-paper/35 text-paper hover:border-paper hover:bg-paper hover:text-deep",
 };
@@ -425,9 +391,7 @@ export function ButtonAnchor({
     <a
       href={href}
       onClick={onClick}
-      {...(external
-        ? { target: "_blank", rel: "noopener noreferrer" }
-        : {})}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className={cx(btnBase, btnVariants[variant], className)}
     >
       {children}
@@ -510,12 +474,7 @@ export function Accordion({
 }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <div
-      className={cx(
-        "divide-y",
-        tone === "dark" ? "divide-paper/15" : "divide-ink/10"
-      )}
-    >
+    <div className={cx("divide-y", tone === "dark" ? "divide-paper/15" : "divide-ink/10")}>
       {items.map((item, i) => {
         const isOpen = open === i;
         return (
@@ -529,9 +488,7 @@ export function Accordion({
                 tone === "dark" ? "text-paper" : "text-ink"
               )}
             >
-              <span className="font-display text-lg font-medium sm:text-xl">
-                {item.q}
-              </span>
+              <span className="font-display text-lg font-medium sm:text-xl">{item.q}</span>
               <span
                 className={cx(
                   "shrink-0 transition-transform duration-300",

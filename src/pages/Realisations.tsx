@@ -28,8 +28,7 @@ export default function Realisations() {
   }, []);
 
   const visible = useMemo(
-    () =>
-      filter === "tous" ? PROJECTS : PROJECTS.filter((p) => p.category === filter),
+    () => (filter === "tous" ? PROJECTS : PROJECTS.filter((p) => p.category === filter)),
     [filter]
   );
 
@@ -107,8 +106,8 @@ export default function Realisations() {
                 Aucun projet dans cette catégorie pour le moment.
               </h2>
               <p className="mt-2 max-w-xl text-ink/65">
-                Chaque chantier publié ici est un chantier réel et livré. Cette
-                catégorie se remplira au fil des projets.
+                Chaque chantier publié ici est un chantier réel et livré. Cette catégorie se
+                remplira au fil des projets.
               </p>
             </div>
             <button
@@ -123,10 +122,9 @@ export default function Realisations() {
 
         <Reveal delay={150}>
           <p className="mt-4 border-l-2 border-brassdark/40 pl-4 text-xs leading-relaxed text-ink/45">
-            Galerie de démonstration — les visuels seront remplacés par les
-            photographies réelles des chantiers de l'entreprise. La structure
-            accepte autant de projets que nécessaire, avec galeries et
-            avant/après.
+            Galerie de démonstration — les visuels seront remplacés par les photographies réelles
+            des chantiers de l'entreprise. La structure accepte autant de projets que nécessaire,
+            avec galeries et avant/après.
           </p>
         </Reveal>
       </section>
@@ -140,8 +138,7 @@ export default function Realisations() {
                 overline="Rénovations complètes"
                 title={
                   <>
-                    Pièce par pièce,{" "}
-                    <em className="italic text-brassdark">la transformation.</em>
+                    Pièce par pièce, <em className="italic text-brassdark">la transformation.</em>
                   </>
                 }
                 intro="Une rénovation complète, c'est transformer chaque espace de vie. Explorez nos projets pièce par pièce : glissez le curseur pour révéler l'avant/après de chaque pièce."

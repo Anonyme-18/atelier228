@@ -3,7 +3,6 @@ import { HashRouter, Link, Route, Routes } from "react-router-dom";
 import { Layout, ScrollManager } from "./components/chrome";
 import { ButtonLink, Overline, Reveal } from "./components/ui";
 import { usePageMeta } from "./lib/usePageMeta";
-import Admin from "./pages/Admin";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import RealisationDetail from "./pages/RealisationDetail";
@@ -26,14 +25,13 @@ function NotFound() {
       </Reveal>
       <Reveal delay={80}>
         <h1 className="mt-4 font-display text-4xl font-medium leading-tight text-ink sm:text-6xl">
-          Cette page n'existe pas,{" "}
-          <em className="italic text-brassdark">mais votre projet, si.</em>
+          Cette page n'existe pas, <em className="italic text-brassdark">mais votre projet, si.</em>
         </h1>
       </Reveal>
       <Reveal delay={160}>
         <p className="mt-5 max-w-xl text-ink/65">
-          Le lien est peut-être erroné. Retrouvez nos services, nos
-          réalisations et le formulaire de devis ci-dessous.
+          Le lien est peut-être erroné. Retrouvez nos services, nos réalisations et le formulaire de
+          devis ci-dessous.
         </p>
       </Reveal>
       <Reveal delay={240}>
@@ -83,7 +81,6 @@ export default function App() {
           />
           <Route path="/a-propos" element={<APropos />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

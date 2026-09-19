@@ -71,8 +71,8 @@ class SceneBoundary extends Component<{ children: ReactNode }, { failed: boolean
             La maquette 3D n'a pas pu s'afficher.
           </p>
           <p className="max-w-md text-sm text-paper/60">
-            Votre navigateur ne prend peut-être pas en charge WebGL. Nos
-            réalisations en photos restent disponibles — et votre devis aussi.
+            Votre navigateur ne prend peut-être pas en charge WebGL. Nos réalisations en photos
+            restent disponibles — et votre devis aussi.
           </p>
           <ButtonLink to="/realisations" variant="outlineLight">
             Voir les réalisations
@@ -151,15 +151,13 @@ export default function Visite3D() {
             </Reveal>
             <Reveal delay={90}>
               <h1 className="max-w-2xl font-display text-3xl font-medium leading-[1.06] text-paper sm:text-5xl lg:text-[3.4rem]">
-                Entrez dans la pièce,{" "}
-                <em className="italic text-brasssoft">tournez autour.</em>
+                Entrez dans la pièce, <em className="italic text-brasssoft">tournez autour.</em>
               </h1>
             </Reveal>
             <Reveal delay={180}>
               <p className="max-w-xl text-sm leading-relaxed text-paper/65 sm:text-base">
-                Le salon témoin d'Atelier 228 modélisé en 3D — les mêmes
-                matériaux, les mêmes teintes que sur nos chantiers. Glissez pour
-                tourner, pincez ou molette pour zoomer.
+                Le salon témoin d'Atelier 228 modélisé en 3D — les mêmes matériaux, les mêmes
+                teintes que sur nos chantiers. Glissez pour tourner, pincez ou molette pour zoomer.
               </p>
             </Reveal>
           </div>
@@ -210,7 +208,15 @@ export default function Visite3D() {
                     onClick={() => setAutoRotate(!autoRotate)}
                     label="Rotation auto"
                     icon={
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="h-4 w-4" aria-hidden="true">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        className="h-4 w-4"
+                        aria-hidden="true"
+                      >
                         <path d="M20 12a8 8 0 1 1-2.3-5.6" />
                         <path d="M20 3v4h-4" />
                       </svg>
@@ -239,17 +245,16 @@ export default function Visite3D() {
               </Reveal>
               <Reveal delay={150}>
                 <p className="mt-6 leading-relaxed text-ink/70">
-                  Sur nos chantiers, la modélisation 3D sert à valider les
-                  volumes, la circulation et la lumière avec vous — avant
-                  d'engager le moindre budget. Ce salon témoin reprend les
-                  matériaux que nous posons réellement : chêne, laiton,
-                  enduits, vert profond.
+                  Sur nos chantiers, la modélisation 3D sert à valider les volumes, la circulation
+                  et la lumière avec vous — avant d'engager le moindre budget. Ce salon témoin
+                  reprend les matériaux que nous posons réellement : chêne, laiton, enduits, vert
+                  profond.
                 </p>
               </Reveal>
               <Reveal delay={220}>
                 <p className="mt-4 leading-relaxed text-ink/70">
-                  Chaque projet démarre ainsi : on tourne autour de la pièce
-                  ensemble, on ajuste, puis on chiffre précisément.
+                  Chaque projet démarre ainsi : on tourne autour de la pièce ensemble, on ajuste,
+                  puis on chiffre précisément.
                 </p>
               </Reveal>
             </div>
@@ -280,12 +285,8 @@ export default function Visite3D() {
                 ].map((item, i) => (
                   <Reveal key={item.n} delay={i * 90}>
                     <div className="group h-full bg-paper p-7 transition-colors duration-300 hover:bg-sand lg:p-8">
-                      <span className="font-display text-2xl italic text-brassdark">
-                        {item.n}
-                      </span>
-                      <h3 className="mt-3 font-display text-xl font-medium text-ink">
-                        {item.t}
-                      </h3>
+                      <span className="font-display text-2xl italic text-brassdark">{item.n}</span>
+                      <h3 className="mt-3 font-display text-xl font-medium text-ink">{item.t}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-ink/65">{item.d}</p>
                     </div>
                   </Reveal>

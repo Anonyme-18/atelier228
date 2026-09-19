@@ -1,19 +1,8 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import { CTABand, ProjectCard } from "../components/cards";
 import { AvantApres } from "../components/AvantApres";
-import {
-  IconArrowUpRight,
-  IconPin,
-  Img,
-  Overline,
-  Reveal,
-} from "../components/ui";
-import {
-  CATEGORY_LABELS,
-  CATEGORY_TO_FORM_TYPE,
-  projectBySlug,
-  PROJECTS,
-} from "../data/content";
+import { IconArrowUpRight, IconPin, Img, Overline, Reveal } from "../components/ui";
+import { CATEGORY_LABELS, CATEGORY_TO_FORM_TYPE, projectBySlug, PROJECTS } from "../data/content";
 import { usePageMeta } from "../lib/usePageMeta";
 
 export default function RealisationDetail() {
@@ -32,9 +21,7 @@ export default function RealisationDetail() {
   if (!project) return <Navigate to="/realisations" replace />;
 
   const others = PROJECTS.filter((p) => p.slug !== project.slug).slice(0, 3);
-  const quoteTo = `/contact?type=${encodeURIComponent(
-    CATEGORY_TO_FORM_TYPE[project.category]
-  )}`;
+  const quoteTo = `/contact?type=${encodeURIComponent(CATEGORY_TO_FORM_TYPE[project.category])}`;
 
   return (
     <>
@@ -42,7 +29,10 @@ export default function RealisationDetail() {
       <section className="bg-deep pb-14 pt-28 text-paper sm:pt-36">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
-            <nav aria-label="Fil d'Ariane" className="text-[12px] uppercase tracking-[0.16em] text-paper/50">
+            <nav
+              aria-label="Fil d'Ariane"
+              className="text-[12px] uppercase tracking-[0.16em] text-paper/50"
+            >
               <Link to="/realisations" className="link-line hover:text-paper">
                 Réalisations
               </Link>
@@ -143,7 +133,10 @@ export default function RealisationDetail() {
                   </h2>
                   <ul className="mt-3 space-y-2.5">
                     {project.scope.map((s) => (
-                      <li key={s} className="flex items-start gap-3 text-[14.5px] leading-relaxed text-ink/75">
+                      <li
+                        key={s}
+                        className="flex items-start gap-3 text-[14.5px] leading-relaxed text-ink/75"
+                      >
                         <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-brassdark" />
                         {s}
                       </li>
@@ -185,7 +178,8 @@ export default function RealisationDetail() {
                     Un projet similaire&nbsp;?
                   </p>
                   <p className="mt-2 text-sm text-paper/65">
-                    Demandez votre devis {CATEGORY_TO_FORM_TYPE[project.category].toLowerCase()} — visite gratuite.
+                    Demandez votre devis {CATEGORY_TO_FORM_TYPE[project.category].toLowerCase()} —
+                    visite gratuite.
                   </p>
                   <Link
                     to={quoteTo}
@@ -235,7 +229,13 @@ export default function RealisationDetail() {
                   className={i === 0 ? "sm:col-span-2" : ""}
                 >
                   <div className="group overflow-hidden rounded-[4px]">
-                    <Img src={g.src} alt={`${project.title} — ${g.label}`} ratio={g.ratio} position={g.position} hover />
+                    <Img
+                      src={g.src}
+                      alt={`${project.title} — ${g.label}`}
+                      ratio={g.ratio}
+                      position={g.position}
+                      hover
+                    />
                   </div>
                   <figcaption className="mt-2.5 text-[13px] text-ink/55">
                     <span className="mr-2 font-display italic text-brassdark">
@@ -252,12 +252,18 @@ export default function RealisationDetail() {
 
       {/* ——— Autres réalisations ——— */}
       {others.length > 0 && (
-        <section className="border-t border-ink/10 bg-sand/60 py-16 lg:py-20" aria-labelledby="autres-real">
+        <section
+          className="border-t border-ink/10 bg-sand/60 py-16 lg:py-20"
+          aria-labelledby="autres-real"
+        >
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
               <Reveal>
                 <Overline>Continuer la visite</Overline>
-                <h2 id="autres-real" className="mt-3 font-display text-3xl font-medium text-ink sm:text-4xl">
+                <h2
+                  id="autres-real"
+                  className="mt-3 font-display text-3xl font-medium text-ink sm:text-4xl"
+                >
                   Autres réalisations
                 </h2>
               </Reveal>

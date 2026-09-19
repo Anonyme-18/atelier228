@@ -122,7 +122,16 @@ export function AvantApres({
             dragging ? "scale-110" : "group-hover:scale-105"
           )}
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-5 w-5"
+            aria-hidden="true"
+          >
             <path d="m9 6-4 6 4 6" />
             <path d="m15 6 4 6-4 6" />
           </svg>

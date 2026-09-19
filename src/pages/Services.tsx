@@ -1,14 +1,6 @@
 import { Link } from "react-router-dom";
 import { PageHead, CTABand } from "../components/cards";
-import {
-  ButtonLink,
-  IconArrowRight,
-  IconCheck,
-  Img,
-  Overline,
-  Reveal,
-  cx,
-} from "../components/ui";
+import { ButtonLink, IconArrowRight, IconCheck, Img, Overline, Reveal, cx } from "../components/ui";
 import { SERVICES } from "../data/content";
 import { usePageMeta } from "../lib/usePageMeta";
 
@@ -38,9 +30,7 @@ export default function Services() {
                 href={`#/services/${s.slug}`}
                 className="rounded-[3px] border border-ink/15 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-ink/70 transition-colors hover:border-brassdark hover:bg-brassdark hover:text-paper"
               >
-                <span className="mr-2 font-display italic text-brassdark">
-                  {s.index}
-                </span>
+                <span className="mr-2 font-display italic text-brassdark">{s.index}</span>
                 {s.name}
               </a>
             ))}
@@ -83,7 +73,10 @@ export default function Services() {
                 <Reveal delay={140}>
                   <ul className="mt-7 grid gap-3 sm:grid-cols-2">
                     {s.benefits.map((b) => (
-                      <li key={b} className="flex items-start gap-2.5 text-sm leading-relaxed text-ink/75">
+                      <li
+                        key={b}
+                        className="flex items-start gap-2.5 text-sm leading-relaxed text-ink/75"
+                      >
                         <IconCheck className="mt-0.5 h-4 w-4 shrink-0 text-brassdark" />
                         {b}
                       </li>
@@ -142,8 +135,8 @@ export default function Services() {
                 Avant de choisir, <em className="italic text-brasssoft">entrez dans la pièce.</em>
               </h2>
               <p className="mt-2 max-w-xl text-sm leading-relaxed text-paper/65">
-                Notre salon témoin est modélisé en 3D : matériaux, lumière,
-                volumes — explorez-le librement pour juger de notre approche.
+                Notre salon témoin est modélisé en 3D : matériaux, lumière, volumes — explorez-le
+                librement pour juger de notre approche.
               </p>
             </div>
             <span className="relative inline-flex h-12 shrink-0 items-center gap-2.5 rounded-[3px] bg-brass px-7 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-deep transition-colors duration-300 group-hover:bg-brasssoft">

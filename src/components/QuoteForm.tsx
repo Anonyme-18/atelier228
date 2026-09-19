@@ -1,10 +1,4 @@
-import {
-  useEffect,
-  useRef,
-  useState,
-  type FormEvent,
-  type ReactNode,
-} from "react";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import {
   BUDGET_OPTIONS,
   PROJECT_TYPES,
@@ -14,13 +8,7 @@ import {
 } from "../lib/api";
 import { track } from "../lib/analytics";
 import { CONTACT } from "../data/content";
-import {
-  ButtonAnchor,
-  ButtonLink,
-  cx,
-  IconArrowRight,
-  IconSpinner,
-} from "./ui";
+import { ButtonAnchor, ButtonLink, cx, IconArrowRight, IconSpinner } from "./ui";
 
 const DRAFT_KEY = "atelier228:draft:v1";
 
@@ -100,9 +88,7 @@ function FieldShell({
 export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
   const [values, setValues] = useState<Values>({
     ...EMPTY,
-    projectType: PROJECT_TYPES.includes(defaultType as never)
-      ? defaultType
-      : "",
+    projectType: PROJECT_TYPES.includes(defaultType as never) ? defaultType : "",
   });
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<Status>("idle");
@@ -149,9 +135,7 @@ export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
     cx(
       /* text-base (16px) évite le zoom auto d'iOS au focus */
       "w-full rounded-[3px] border bg-bone px-4 py-3 text-base text-ink placeholder:text-ink/35 transition-colors focus:outline-none",
-      errors[key]
-        ? "border-err focus:border-err"
-        : "border-line focus:border-brassdark"
+      errors[key] ? "border-err focus:border-err" : "border-line focus:border-brassdark"
     );
 
   const aria = (key: keyof Values) => ({
@@ -171,8 +155,7 @@ export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
         fields: Object.keys(fieldErrors).join(","),
       });
       const first = FIELD_ORDER.find((k) => fieldErrors[k]);
-      if (first)
-        document.getElementById(`f-${first}`)?.focus();
+      if (first) document.getElementById(`f-${first}`)?.focus();
       return;
     }
 
@@ -236,18 +219,15 @@ export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
           Votre demande a bien été enregistrée.
         </h2>
         <p className="mt-3 leading-relaxed text-ink/70">
-          Merci {values.fullName.split(" ")[0]}. Nous revenons vers vous
-          prochainement
-          {values.email ? ` à l'adresse ${values.email}` : ""} pour organiser la
-          visite et établir votre devis.
+          Merci {values.fullName.split(" ")[0]}. Nous revenons vers vous prochainement
+          {values.email ? ` à l'adresse ${values.email}` : ""} pour organiser la visite et établir
+          votre devis.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-3">
           <span className="rounded-[3px] bg-deep px-4 py-2 font-mono text-sm font-semibold tracking-widest text-brasssoft">
             Réf. {ref}
           </span>
-          <span className="text-xs text-ink/55">
-            Conservez cette référence pour tout échange.
-          </span>
+          <span className="text-xs text-ink/55">Conservez cette référence pour tout échange.</span>
         </div>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <ButtonAnchor
@@ -259,12 +239,7 @@ export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
           >
             Poursuivre sur WhatsApp
           </ButtonAnchor>
-          <ButtonLink
-            to="/"
-            variant="outlineDark"
-            className="h-11"
-            arrow={false}
-          >
+          <ButtonLink to="/" variant="outlineDark" className="h-11" arrow={false}>
             Retour à l'accueil
           </ButtonLink>
         </div>
@@ -284,9 +259,7 @@ export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
         >
           <span className="mt-0.5 h-2.5 w-2.5 shrink-0 rounded-full bg-err" />
           <div className="text-sm leading-relaxed text-ink/80">
-            <p className="font-semibold text-err">
-              Nous n'avons pas pu enregistrer votre demande.
-            </p>
+            <p className="font-semibold text-err">Nous n'avons pas pu enregistrer votre demande.</p>
             <p className="mt-1">{serverError}</p>
             <button
               type="button"
@@ -446,9 +419,7 @@ export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
           aria-busy={submitting}
           className={cx(
             "group flex h-13 w-full cursor-pointer items-center justify-center gap-3 rounded-[3px] bg-brass px-7 text-[13px] font-semibold uppercase tracking-[0.14em] text-deep transition-all duration-300",
-            submitting
-              ? "cursor-wait opacity-80"
-              : "hover:bg-brasssoft active:translate-y-px"
+            submitting ? "cursor-wait opacity-80" : "hover:bg-brasssoft active:translate-y-px"
           )}
         >
           {submitting ? (
@@ -464,8 +435,8 @@ export function QuoteForm({ defaultType = "" }: { defaultType?: string }) {
           )}
         </button>
         <p className="mt-3 text-center text-xs leading-relaxed text-ink/50">
-          En envoyant ce formulaire, vous acceptez d'être recontacté au sujet de
-          votre projet. Vos informations ne sont jamais transmises à des tiers.
+          En envoyant ce formulaire, vous acceptez d'être recontacté au sujet de votre projet. Vos
+          informations ne sont jamais transmises à des tiers.
         </p>
       </div>
     </form>

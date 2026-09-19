@@ -151,7 +151,11 @@ export default function RoomScene({
       fabricPine: new THREE.MeshStandardMaterial({ color: C.pineSoft, roughness: 1 }),
       fabricBrass: new THREE.MeshStandardMaterial({ color: C.brassSoft, roughness: 1 }),
       rug: new THREE.MeshStandardMaterial({ color: "#e0dac8", roughness: 1 }),
-      charcoal: new THREE.MeshStandardMaterial({ color: C.charcoal, roughness: 0.4, metalness: 0.2 }),
+      charcoal: new THREE.MeshStandardMaterial({
+        color: C.charcoal,
+        roughness: 0.4,
+        metalness: 0.2,
+      }),
       screen: new THREE.MeshStandardMaterial({ color: "#101512", roughness: 0.2, metalness: 0.4 }),
       pot: new THREE.MeshStandardMaterial({ color: "#a2684a", roughness: 0.85 }),
       leaf: new THREE.MeshStandardMaterial({ color: C.leaf, roughness: 0.8, flatShading: true }),
@@ -204,14 +208,7 @@ export default function RoomScene({
     ) => add(geo(new THREE.BoxGeometry(w, h, d)), m, x, y, z, opts);
 
     /* ——— La pièce (7 × 5 × 2,9 m) ——— */
-    const floor = add(
-      geo(new THREE.PlaneGeometry(7, 5)),
-      mat.floor,
-      0,
-      0,
-      0,
-      { cast: false }
-    );
+    const floor = add(geo(new THREE.PlaneGeometry(7, 5)), mat.floor, 0, 0, 0, { cast: false });
     floor.rotation.x = -Math.PI / 2;
 
     const ceil = add(geo(new THREE.PlaneGeometry(7, 5)), mat.ceiling, 0, 2.9, 0, {
@@ -278,7 +275,13 @@ export default function RoomScene({
       }
     }
     // Vase laiton
-    const vase = add(geo(new THREE.CylinderGeometry(0.07, 0.09, 0.24, 16)), mat.brass, -1.35, 1.65, -2.32);
+    const vase = add(
+      geo(new THREE.CylinderGeometry(0.07, 0.09, 0.24, 16)),
+      mat.brass,
+      -1.35,
+      1.65,
+      -2.32
+    );
     vase.castShadow = false;
 
     /* ——— Canapé ——— */
@@ -306,7 +309,14 @@ export default function RoomScene({
         box(0.035, 0.4, 0.035, mat.brass, 0.2 + lx, 0.2, 0.05 + lz, { cast: false });
     box(0.32, 0.035, 0.24, mat.fabricPine, 0.02, 0.47, 0.05, { cast: false }); // livres
     box(0.28, 0.03, 0.2, mat.brass, 0.03, 0.5, 0.05, { cast: false });
-    const bowl = add(geo(new THREE.SphereGeometry(0.08, 16, 12, 0, Math.PI * 2, 0, Math.PI / 2)), mat.brass, 0.45, 0.45, 0.1, { cast: false });
+    const bowl = add(
+      geo(new THREE.SphereGeometry(0.08, 16, 12, 0, Math.PI * 2, 0, Math.PI / 2)),
+      mat.brass,
+      0.45,
+      0.45,
+      0.1,
+      { cast: false }
+    );
     bowl.scale.y = 0.5;
 
     /* ——— Bibliothèque mur droit ——— */
@@ -333,23 +343,65 @@ export default function RoomScene({
     /* ——— Lampadaire arc (laiton) ——— */
     const lampX = -2.55;
     const lampZ = -1.7;
-    add(geo(new THREE.CylinderGeometry(0.16, 0.2, 0.04, 24)), mat.charcoal, lampX, 0.02, lampZ, { cast: false });
+    add(geo(new THREE.CylinderGeometry(0.16, 0.2, 0.04, 24)), mat.charcoal, lampX, 0.02, lampZ, {
+      cast: false,
+    });
     add(geo(new THREE.CylinderGeometry(0.022, 0.022, 1.85, 12)), mat.brass, lampX, 0.95, lampZ);
-    const arc = add(geo(new THREE.TorusGeometry(0.55, 0.02, 8, 24, Math.PI / 2)), mat.brass, lampX + 0.55, 1.87, lampZ);
+    const arc = add(
+      geo(new THREE.TorusGeometry(0.55, 0.02, 8, 24, Math.PI / 2)),
+      mat.brass,
+      lampX + 0.55,
+      1.87,
+      lampZ
+    );
     arc.rotation.z = Math.PI;
     arc.rotation.y = Math.PI / 2;
     add(geo(new THREE.CylinderGeometry(0.02, 0.02, 0.3, 8)), mat.brass, lampX + 1.1, 1.72, lampZ);
-    const arcShade = add(geo(new THREE.CylinderGeometry(0.14, 0.2, 0.22, 24, 1, true)), mat.shade, lampX + 1.1, 1.6, lampZ);
+    const arcShade = add(
+      geo(new THREE.CylinderGeometry(0.14, 0.2, 0.22, 24, 1, true)),
+      mat.shade,
+      lampX + 1.1,
+      1.6,
+      lampZ
+    );
     arcShade.castShadow = false;
-    const arcBulb = add(geo(new THREE.SphereGeometry(0.05, 12, 10)), mat.bulb, lampX + 1.1, 1.56, lampZ, { cast: false });
+    const arcBulb = add(
+      geo(new THREE.SphereGeometry(0.05, 12, 10)),
+      mat.bulb,
+      lampX + 1.1,
+      1.56,
+      lampZ,
+      { cast: false }
+    );
 
     /* ——— Suspensions au-dessus de la table basse ——— */
     const pendants: { bulb: THREE.Mesh; light: THREE.PointLight }[] = [];
     const makePendant = (x: number, z: number, drop: number) => {
-      add(geo(new THREE.CylinderGeometry(0.008, 0.008, drop, 6)), mat.charcoal, x, 2.9 - drop / 2, z, { cast: false });
-      const shade = add(geo(new THREE.CylinderGeometry(0.05, 0.17, 0.2, 24, 1, true)), mat.shade, x, 2.9 - drop - 0.08, z, { cast: false });
+      add(
+        geo(new THREE.CylinderGeometry(0.008, 0.008, drop, 6)),
+        mat.charcoal,
+        x,
+        2.9 - drop / 2,
+        z,
+        { cast: false }
+      );
+      const shade = add(
+        geo(new THREE.CylinderGeometry(0.05, 0.17, 0.2, 24, 1, true)),
+        mat.shade,
+        x,
+        2.9 - drop - 0.08,
+        z,
+        { cast: false }
+      );
       void shade;
-      const bulb = add(geo(new THREE.SphereGeometry(0.045, 12, 10)), mat.bulb, x, 2.9 - drop - 0.1, z, { cast: false });
+      const bulb = add(
+        geo(new THREE.SphereGeometry(0.045, 12, 10)),
+        mat.bulb,
+        x,
+        2.9 - drop - 0.1,
+        z,
+        { cast: false }
+      );
       const light = new THREE.PointLight("#ffd9a0", 6, 7, 1.8);
       light.position.set(x, 2.9 - drop - 0.15, z);
       light.castShadow = false;
@@ -361,8 +413,20 @@ export default function RoomScene({
 
     /* ——— Plante près de la fenêtre ——— */
     const plant = (x: number, z: number, s: number) => {
-      add(geo(new THREE.CylinderGeometry(0.16 * s, 0.12 * s, 0.3 * s, 16)), mat.pot, x, 0.15 * s, z);
-      add(geo(new THREE.CylinderGeometry(0.02 * s, 0.03 * s, 0.7 * s, 8)), mat.trunk, x, 0.6 * s, z);
+      add(
+        geo(new THREE.CylinderGeometry(0.16 * s, 0.12 * s, 0.3 * s, 16)),
+        mat.pot,
+        x,
+        0.15 * s,
+        z
+      );
+      add(
+        geo(new THREE.CylinderGeometry(0.02 * s, 0.03 * s, 0.7 * s, 8)),
+        mat.trunk,
+        x,
+        0.6 * s,
+        z
+      );
       const fol = new THREE.Group();
       for (let i = 0; i < 5; i++) {
         const blob = new THREE.Mesh(geo(new THREE.IcosahedronGeometry(0.22 * s, 0)), mat.leaf);
@@ -386,7 +450,9 @@ export default function RoomScene({
     box(0.16, 0.42, 0.7, mat.fabricPine, 2.45, 0.48, 1.1);
     const stool = add(geo(new THREE.CylinderGeometry(0.2, 0.2, 0.05, 24)), mat.oak, 2.1, 0.5, 0.45);
     stool.castShadow = true;
-    add(geo(new THREE.CylinderGeometry(0.02, 0.02, 0.5, 8)), mat.brass, 2.1, 0.25, 0.45, { cast: false });
+    add(geo(new THREE.CylinderGeometry(0.02, 0.02, 0.5, 8)), mat.brass, 2.1, 0.25, 0.45, {
+      cast: false,
+    });
 
     /* ——— Lumières ——— */
     scene.add(new THREE.HemisphereLight("#f4ead2", "#22301f", 0.55));
@@ -472,8 +538,7 @@ export default function RoomScene({
       Object.values(mat).forEach((m) => m.dispose());
       (mat.floor.map as THREE.Texture | null)?.dispose();
       renderer.dispose();
-      if (renderer.domElement.parentElement === mount)
-        mount.removeChild(renderer.domElement);
+      if (renderer.domElement.parentElement === mount) mount.removeChild(renderer.domElement);
       apiRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

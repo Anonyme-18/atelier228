@@ -15,11 +15,7 @@ import {
   Reveal,
   SectionHead,
 } from "../components/ui";
-import {
-  ProcessSteps,
-  ProjectCard,
-  ServiceLine,
-} from "../components/cards";
+import { ProcessSteps, ProjectCard, ServiceLine } from "../components/cards";
 import { AvantApres } from "../components/AvantApres";
 import { GalerieAvantApres } from "../components/GalerieAvantApres";
 import { consumeAnchor } from "../components/chrome";
@@ -98,25 +94,20 @@ export default function Home() {
         <div
           className="pointer-events-none absolute -right-40 top-0 h-[42rem] w-[42rem] rounded-full opacity-[0.07]"
           style={{
-            background:
-              "radial-gradient(circle, var(--color-brasssoft) 0%, transparent 65%)",
+            background: "radial-gradient(circle, var(--color-brasssoft) 0%, transparent 65%)",
           }}
           aria-hidden="true"
         />
         <div className="mx-auto grid max-w-7xl gap-10 px-5 pb-14 pt-28 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-14 lg:pb-20 lg:pt-40">
           <div className="relative z-10 lg:col-span-6">
             <Reveal>
-              <Overline tone="light">
-                Rénovation · Aménagement — Lomé, Togo
-              </Overline>
+              <Overline tone="light">Rénovation · Aménagement — Lomé, Togo</Overline>
             </Reveal>
             <h1 className="mt-6 font-display text-[2.6rem] font-medium leading-[1.04] sm:text-6xl lg:text-[4.2rem]">
               <LinesReveal
                 lines={[
                   <>Votre intérieur,</>,
-                  <>
-                    pensé et réalisé{" "}
-                  </>,
+                  <>pensé et réalisé </>,
                   <>
                     <em className="italic text-brasssoft">dans les règles de l'art.</em>
                   </>,
@@ -125,19 +116,14 @@ export default function Home() {
             </h1>
             <Reveal delay={350}>
               <p className="mt-7 max-w-xl text-base leading-relaxed text-paper/70 sm:text-lg">
-                Atelier 228 pilote votre projet de bout en bout : rénovation
-                complète, aménagement sur mesure, cuisines et salles de bain.
-                Un interlocuteur unique, un devis détaillé, des finitions
-                soignées.
+                Atelier 228 pilote votre projet de bout en bout : rénovation complète, aménagement
+                sur mesure, cuisines et salles de bain. Un interlocuteur unique, un devis détaillé,
+                des finitions soignées.
               </p>
             </Reveal>
             <Reveal delay={430}>
               <div className="mt-9 flex flex-col gap-3.5 sm:flex-row">
-                <ButtonLink
-                  to="/contact"
-                  trackSource="hero"
-                  className="h-13 px-8 text-[13px]"
-                >
+                <ButtonLink to="/contact" trackSource="hero" className="h-13 px-8 text-[13px]">
                   Demander un devis
                 </ButtonLink>
                 <ButtonLink
@@ -191,16 +177,13 @@ export default function Home() {
       </section>
 
       {/* ═══════════ Marquee éditorial ═══════════ */}
-      <Marquee
-        items={[
-          ...SERVICES.map((s) => s.name),
-          "Lomé — Togo",
-          "Devis gratuit",
-        ]}
-      />
+      <Marquee items={[...SERVICES.map((s) => s.name), "Lomé — Togo", "Devis gratuit"]} />
 
       {/* ═══════════ 01 — Services ═══════════ */}
-      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="services-titre">
+      <section
+        className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28"
+        aria-labelledby="services-titre"
+      >
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <SectionHead
             overline="01 · Nos services"
@@ -213,11 +196,7 @@ export default function Home() {
             intro="Chaque prestation est menée par une équipe dédiée, avec des matériaux choisis pour durer sous climat tropical."
           />
           <Reveal delay={200} className="shrink-0">
-            <ButtonLink
-              to="/services"
-              variant="outlineDark"
-              trackSource="accueil_services"
-            >
+            <ButtonLink to="/services" variant="outlineDark" trackSource="accueil_services">
               Découvrir nos services
             </ButtonLink>
           </Reveal>
@@ -249,8 +228,7 @@ export default function Home() {
               tone="light"
               title={
                 <span id="real-titre">
-                  Nous préférons <em className="italic text-brasssoft">prouver</em>{" "}
-                  que promettre.
+                  Nous préférons <em className="italic text-brasssoft">prouver</em> que promettre.
                 </span>
               }
               intro="Des chantiers livrés à Lomé, photographiés tels quels. Jugez par vous-même du niveau de finition."
@@ -295,8 +273,7 @@ export default function Home() {
                 tone="light"
                 title={
                   <span id="avap-titre">
-                    La rénovation se juge{" "}
-                    <em className="italic text-brasssoft">au résultat.</em>
+                    La rénovation se juge <em className="italic text-brasssoft">au résultat.</em>
                   </span>
                 }
                 intro="Pas de discours : faites glisser le curseur et comparez vous-même l'état d'origine et le chantier livré. C'est exactement ce que nous ferons chez vous."
@@ -318,10 +295,17 @@ export default function Home() {
               </Reveal>
               <Reveal delay={300}>
                 <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                  <ButtonLink to="/contact?type=Rénovation complète" trackSource="accueil_avantapres">
+                  <ButtonLink
+                    to="/contact?type=Rénovation complète"
+                    trackSource="accueil_avantapres"
+                  >
                     Demander un devis
                   </ButtonLink>
-                  <ButtonLink to="/realisations" variant="outlineLight" trackSource="accueil_avantapres_real">
+                  <ButtonLink
+                    to="/realisations"
+                    variant="outlineLight"
+                    trackSource="accueil_avantapres_real"
+                  >
                     Voir les réalisations
                   </ButtonLink>
                 </div>
@@ -388,7 +372,10 @@ export default function Home() {
       )}
 
       {/* ═══════════ 02bis — Teaser visite 3D ═══════════ */}
-      <section className="relative overflow-hidden bg-pine text-paper" aria-labelledby="visite3d-titre">
+      <section
+        className="relative overflow-hidden bg-pine text-paper"
+        aria-labelledby="visite3d-titre"
+      >
         {/* grille de fond façon plan d'architecte */}
         <svg className="absolute inset-0 h-full w-full opacity-[0.06]" aria-hidden="true">
           <defs>
@@ -405,16 +392,18 @@ export default function Home() {
               <Overline tone="light">Nouveau · Visite 3D</Overline>
             </Reveal>
             <Reveal delay={80}>
-              <h2 id="visite3d-titre" className="mt-4 font-display text-3xl font-medium leading-[1.08] sm:text-4xl lg:text-[2.75rem]">
-                Entrez dans notre salon témoin,{" "}
-                <em className="italic text-brasssoft">en 3D.</em>
+              <h2
+                id="visite3d-titre"
+                className="mt-4 font-display text-3xl font-medium leading-[1.08] sm:text-4xl lg:text-[2.75rem]"
+              >
+                Entrez dans notre salon témoin, <em className="italic text-brasssoft">en 3D.</em>
               </h2>
             </Reveal>
             <Reveal delay={150}>
               <p className="mt-5 max-w-xl leading-relaxed text-paper/70">
-                Tournez autour de la pièce, allumez les lampes, changez de point
-                de vue. La même méthode que sur nos chantiers : on valide
-                l'espace en maquette avant de poser le premier matériau.
+                Tournez autour de la pièce, allumez les lampes, changez de point de vue. La même
+                méthode que sur nos chantiers : on valide l'espace en maquette avant de poser le
+                premier matériau.
               </p>
             </Reveal>
             <Reveal delay={220}>
@@ -443,19 +432,54 @@ export default function Home() {
               aria-label="Illustration isométrique du salon témoin modélisé en 3D"
             >
               {/* sol */}
-              <path d="M170 218 292 157 170 96 48 157Z" fill="#1a332a" stroke="#f2f0e9" strokeOpacity="0.5" />
+              <path
+                d="M170 218 292 157 170 96 48 157Z"
+                fill="#1a332a"
+                stroke="#f2f0e9"
+                strokeOpacity="0.5"
+              />
               {/* mur gauche */}
-              <path d="M48 157 170 96V30L48 91Z" fill="#152a22" stroke="#f2f0e9" strokeOpacity="0.5" />
+              <path
+                d="M48 157 170 96V30L48 91Z"
+                fill="#152a22"
+                stroke="#f2f0e9"
+                strokeOpacity="0.5"
+              />
               {/* mur droit */}
-              <path d="M170 96 292 157V91L170 30Z" fill="#12241d" stroke="#f2f0e9" strokeOpacity="0.5" />
+              <path
+                d="M170 96 292 157V91L170 30Z"
+                fill="#12241d"
+                stroke="#f2f0e9"
+                strokeOpacity="0.5"
+              />
               {/* fenêtre mur gauche */}
-              <path d="M72 128 130 99V64L72 93Z" fill="#ffe6b8" fillOpacity="0.85" stroke="#d9bc7f" />
+              <path
+                d="M72 128 130 99V64L72 93Z"
+                fill="#ffe6b8"
+                fillOpacity="0.85"
+                stroke="#d9bc7f"
+              />
               <path d="M101 113.5V81" stroke="#1f3d31" strokeWidth="2" />
               {/* canapé */}
               <g className="dim-fade">
-                <path d="M150 196 218 162 196 151 128 185Z" fill="#5f7367" stroke="#f2f0e9" strokeOpacity="0.35" />
-                <path d="M128 185 150 196v-26l-22-11Z" fill="#4d5f55" stroke="#f2f0e9" strokeOpacity="0.35" />
-                <path d="M128 159 196 125v26l-68 34Z" fill="#6d8175" stroke="#f2f0e9" strokeOpacity="0.35" />
+                <path
+                  d="M150 196 218 162 196 151 128 185Z"
+                  fill="#5f7367"
+                  stroke="#f2f0e9"
+                  strokeOpacity="0.35"
+                />
+                <path
+                  d="M128 185 150 196v-26l-22-11Z"
+                  fill="#4d5f55"
+                  stroke="#f2f0e9"
+                  strokeOpacity="0.35"
+                />
+                <path
+                  d="M128 159 196 125v26l-68 34Z"
+                  fill="#6d8175"
+                  stroke="#f2f0e9"
+                  strokeOpacity="0.35"
+                />
               </g>
               {/* suspension */}
               <g>
@@ -467,7 +491,14 @@ export default function Home() {
                 <path d="M170 240 300 175" />
                 <path d="M166 238l8 4M296 173l8 4" strokeDasharray="none" />
               </g>
-              <text x="216" y="224" fill="#d9bc7f" fontSize="11" fontFamily="Archivo, sans-serif" letterSpacing="2">
+              <text
+                x="216"
+                y="224"
+                fill="#d9bc7f"
+                fontSize="11"
+                fontFamily="Archivo, sans-serif"
+                letterSpacing="2"
+              >
                 5,20 m
               </text>
               {/* points sommets */}
@@ -483,7 +514,10 @@ export default function Home() {
       </section>
 
       {/* ═══════════ 03 — Pourquoi nous (colonne sticky) ═══════════ */}
-      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28" aria-labelledby="pourquoi-titre">
+      <section
+        className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28"
+        aria-labelledby="pourquoi-titre"
+      >
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-28">
@@ -553,7 +587,11 @@ export default function Home() {
       </section>
 
       {/* ═══════════ 05 — L'entreprise ═══════════ */}
-      <section id="entreprise" className="scroll-mt-24 border-t border-ink/10 bg-paper" aria-labelledby="entreprise-titre">
+      <section
+        id="entreprise"
+        className="scroll-mt-24 border-t border-ink/10 bg-paper"
+        aria-labelledby="entreprise-titre"
+      >
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:py-28">
           <Reveal>
             <div className="relative">
@@ -577,25 +615,22 @@ export default function Home() {
               overline="05 · L'entreprise"
               title={
                 <span id="entreprise-titre">
-                  Un atelier, une équipe,{" "}
-                  <em className="italic text-brassdark">une méthode.</em>
+                  Un atelier, une équipe, <em className="italic text-brassdark">une méthode.</em>
                 </span>
               }
             />
             <Reveal delay={180}>
               <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-ink/70">
                 <p>
-                  Atelier 228 est né d'une conviction simple : à Lomé, un projet
-                  de rénovation ne devrait jamais être une source d'inquiétude.
-                  Nous avons construit l'entreprise autour de cela — une équipe
-                  locale stable, des artisans qualifiés suivis au quotidien, et
-                  une méthode qui vous garde informé du premier jour au dernier.
+                  Atelier 228 est né d'une conviction simple : à Lomé, un projet de rénovation ne
+                  devrait jamais être une source d'inquiétude. Nous avons construit l'entreprise
+                  autour de cela — une équipe locale stable, des artisans qualifiés suivis au
+                  quotidien, et une méthode qui vous garde informé du premier jour au dernier.
                 </p>
                 <p>
-                  Nous choisissons des matériaux adaptés au climat et aux usages
-                  réels, et nous contrôlons chaque étape avant de passer à la
-                  suivante. C'est cette discipline, plus que les effets
-                  d'annonce, qui fait la qualité d'un chantier livré.
+                  Nous choisissons des matériaux adaptés au climat et aux usages réels, et nous
+                  contrôlons chaque étape avant de passer à la suivante. C'est cette discipline,
+                  plus que les effets d'annonce, qui fait la qualité d'un chantier livré.
                 </p>
               </div>
             </Reveal>
@@ -615,11 +650,7 @@ export default function Home() {
             </Reveal>
             <Reveal delay={320}>
               <div className="mt-9">
-                <ButtonLink
-                  to="/contact"
-                  variant="dark"
-                  trackSource="accueil_entreprise"
-                >
+                <ButtonLink to="/contact" variant="dark" trackSource="accueil_entreprise">
                   Parlons de votre projet
                 </ButtonLink>
               </div>
@@ -652,9 +683,8 @@ export default function Home() {
             </h2>
             <Reveal delay={250}>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-deep/70 sm:text-lg">
-                Décrivez votre projet en deux minutes. Nous vous rappelons pour
-                organiser la visite et établir votre devis détaillé — gratuit et
-                sans engagement.
+                Décrivez votre projet en deux minutes. Nous vous rappelons pour organiser la visite
+                et établir votre devis détaillé — gratuit et sans engagement.
               </p>
             </Reveal>
             <Reveal delay={330}>

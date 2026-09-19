@@ -1,70 +1,79 @@
 import { neon } from "@neondatabase/serverless";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { sanitize, validateQuote, type QuoteInput } from "../src/lib/quote-validation";
+
+const MAX_BODY_BYTES = 20_000;
+const recentRequests = new Map<string, number[]>();
+
+function setSecurityHeaders(res: VercelResponse) {
+  res.setHeader("Cache-Control", "no-store");
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("Content-Security-Policy", "default-src 'none'; frame-ancestors 'none'");
+}
+
+function clientIp(req: VercelRequest): string {
+  const forwarded = req.headers["x-forwarded-for"];
+  return (Array.isArray(forwarded) ? forwarded[0] : forwarded?.split(",")[0])?.trim() || "unknown";
+}
+
+function allowedRequest(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = (recentRequests.get(ip) ?? []).filter((time) => time > now - 60 * 60 * 1000);
+  if (timestamps.length >= 5) {
+    recentRequests.set(ip, timestamps);
+    return false;
+  }
+  timestamps.push(now);
+  recentRequests.set(ip, timestamps);
+  return true;
+}
+
+function parseBody(req: VercelRequest): QuoteInput | null {
+  const raw = typeof req.body === "string" ? req.body : JSON.stringify(req.body ?? {});
+  if (Buffer.byteLength(raw, "utf8") > MAX_BODY_BYTES) return null;
+  try {
+    const body = JSON.parse(raw) as Partial<QuoteInput>;
+    return {
+      fullName: typeof body.fullName === "string" ? body.fullName : "",
+      email: typeof body.email === "string" ? body.email : "",
+      phone: typeof body.phone === "string" ? body.phone : "",
+      projectType: typeof body.projectType === "string" ? body.projectType : "",
+      projectDescription: typeof body.projectDescription === "string" ? body.projectDescription : "",
+      location: typeof body.location === "string" ? body.location : "",
+      budget: typeof body.budget === "string" ? body.budget : "",
+      desiredDate: typeof body.desiredDate === "string" ? body.desiredDate : "",
+      website: typeof body.website === "string" ? body.website : "",
+    };
+  } catch {
+    return null;
+  }
+}
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // CORS headers
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,PATCH,DELETE,POST,PUT");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-  );
+  setSecurityHeaders(res);
+  if (req.method !== "POST") return res.status(405).setHeader("Allow", "POST").json({ error: "Méthode non autorisée." });
+  const databaseUrl = process.env.NEON_DATABASE_URL;
+  if (!databaseUrl) return res.status(500).json({ error: "Database unavailable" });
+  if (!allowedRequest(clientIp(req))) return res.status(429).json({ code: "RATE_LIMIT", error: "Trop de demandes. Réessayez plus tard." });
 
-  if (req.method === "OPTIONS") {
-    res.status(200).end();
-    return;
-  }
-
-  // Rate limiting (simple in-memory for demo, use Redis in production)
-  const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
-  const rateLimitKey = `rate_limit_${ip}`;
-  
-  // Check database URL
-  const databaseUrl = process.env.VITE_NEON_DATABASE_URL;
-  if (!databaseUrl) {
-    return res.status(500).json({ error: "Database URL not configured" });
-  }
+  const input = parseBody(req);
+  if (!input) return res.status(400).json({ code: "VALIDATION", error: "Requête invalide." });
+  if (input.website.trim()) return res.status(202).json({ data: { id: "spam", ref: "SPAM" } });
+  const errors = validateQuote(input);
+  if (Object.keys(errors).length > 0) return res.status(400).json({ code: "VALIDATION", error: "Certains champs doivent être corrigés.", errors });
 
   try {
     const sql = neon(databaseUrl);
-
-    if (req.method === "POST") {
-      const { fullName, email, phone, projectType, projectDescription, location, budget, desiredDate } = req.body;
-
-      // Validation
-      if (!fullName || !email || !phone || !projectType || !projectDescription) {
-        return res.status(400).json({ error: "Missing required fields" });
-      }
-
-      // Insert quote request
-      const result = await sql`
-        INSERT INTO quote_requests (
-          full_name, email, phone, project_type, project_description, 
-          location, budget, desired_date, status, created_at, updated_at
-        ) VALUES (
-          ${fullName}, ${email}, ${phone}, ${projectType}, ${projectDescription},
-          ${location || null}, ${budget || null}, ${desiredDate || null}, 'NEW', NOW(), NOW()
-        )
-        RETURNING *
-      `;
-
-      return res.status(201).json({ success: true, data: result[0] });
-    }
-
-    if (req.method === "GET") {
-      const quotes = await sql`
-        SELECT * FROM quote_requests 
-        ORDER BY created_at DESC 
-        LIMIT 100
-      `;
-
-      return res.status(200).json({ success: true, data: quotes });
-    }
-
-    return res.status(405).json({ error: "Method not allowed" });
+    const ref = `D-${new Date().toISOString().slice(2, 7).replace("-", "")}-${crypto.randomUUID().slice(0, 4).toUpperCase()}`;
+    const [quote] = await sql`
+      INSERT INTO quote_requests (ref, full_name, email, phone, project_type, project_description, location, budget, desired_date, status, created_at, updated_at)
+      VALUES (${ref}, ${sanitize(input.fullName, 80)}, ${input.email.trim().toLowerCase()}, ${sanitize(input.phone, 30)}, ${input.projectType}, ${sanitize(input.projectDescription, 1500)}, ${sanitize(input.location, 120) || null}, ${input.budget || null}, ${input.desiredDate || null}, 'NEW', NOW(), NOW())
+      RETURNING id, ref
+    `;
+    return res.status(201).json({ data: quote });
   } catch (error) {
-    console.error("Database error:", error);
-    return res.status(500).json({ error: "Internal server error" });
+    console.error("Quote insertion failed", error);
+    return res.status(500).json({ code: "STORAGE", error: "Impossible d'enregistrer la demande." });
   }
 }
